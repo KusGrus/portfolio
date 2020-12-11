@@ -1,0 +1,11 @@
+<div class="select" (click)="touched()">
+  <div class="select__header" (click)="visible = !visible">
+    <span class="select__current">{{ default }}</span>
+    <div class="select__icon"></div>
+  </div>
+  <div class="select__body" *ngIf="visible" [@box]>
+    <div class="select__item" *ngFor="let item of data" (click)="handle(item)">
+      {{ item.value }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,148 @@
+@charset "UTF-8";
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*--------------------*/
+body,
+html {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.wrapper {
+  min-height: 100%;
+  background-color: #8a8a8a;
+  padding: 40px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  background-color: #f3f3f3;
+  border-radius: 30px;
+}
+
+.header {
+  font-weight: 900;
+  font-size: 35px;
+  padding: 30px 40px 0;
+}
+
+.header h1 {
+  color: rgba(0, 0, 0, 0.8);
+  text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.1);
+}
+
+.navigation {
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px 40px;
+  background-color: #052eb4;
+}
+
+.navigation button {
+  font-weight: 700;
+  padding: 5px 15px;
+  border-radius: 10px;
+  color: white;
+  -webkit-box-shadow: 3px 3px 1px 0px rgba(50, 50, 50, 0.75);
+  box-shadow: 3px 3px 1px 0px rgba(50, 50, 50, 0.75);
+  background: #1e5799;
+  background: -webkit-gradient(linear, left top, left bottom, from(#1e5799), color-stop(50%, #2989d8), color-stop(51%, #207cca), to(#7db9e8));
+  background: linear-gradient(to bottom, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 );
+}
+
+.navigation button:not(:first-child) {
+  margin-left: 15px;
+}
+
+.content {
+  padding: 0 40px 40px;
+  margin-top: 30px;
+}
+
+.content h2 {
+  font-weight: 700;
+  font-size: 25px;
+  color: rgba(0, 0, 0, 0.8);
+  text-shadow: 2px 2px 3px rgba(51, 51, 51, 0.1);
+}
+
+.content p {
+  text-align: justify;
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+}

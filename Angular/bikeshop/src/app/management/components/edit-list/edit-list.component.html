@@ -1,0 +1,43 @@
+<div class="content">
+  <div class="store" *ngIf="store$ | async; else empty">
+    <div
+      class="item"
+      *ngFor="
+        let item of store$
+          | async
+          | paginate: { itemsPerPage: 5, currentPage: page }
+      "
+    >
+      <div class="item__image">
+        <img [src]="item.images[0]" alt="bike" />
+      </div>
+      <div class="item__information">
+        <div class="title">{{ item.name }}</div>
+        <div class="description">{{ item.description | limit: 250 }}</div>
+      </div>
+      <div class="item__action">
+        <button class="control btn" [routerLink]="['/management', item.id]">
+          Edit
+        </button>
+        <button class="control btn-danger" (click)="onDelete(item)">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="pagination" *ngIf="store$ | async">
+    <pagination-controls
+      class="my-pagination"
+      (pageChange)="page = $event"
+    ></pagination-controls>
+  </div>
+</div>
+
+<ng-template #empty>
+  <div class="block-empty">
+    <a [routerLink]="['/add']">Add new item</a>
+    <img src="../../../../assets/image/icons/empty-edit.jpg" alt="" />
+  </div>
+</ng-template>
+
+<ng-container #confirm></ng-container>

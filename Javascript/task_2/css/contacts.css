@@ -1,0 +1,154 @@
+/*!*====== CONTENT ===================================================================================*!*/
+
+.content__body {
+    flex: 1 1 auto;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feedback__content {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    position: relative;
+    font-size: 16px;
+    background-color: #4d4959;
+    border-radius: 10px;
+    color: white;
+}
+
+.feedback__title {
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.feedback__title::after {
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 10%;
+    background-color: white;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.3s ease 0s;
+}
+
+.feedback__list {
+    font-weight: 700;
+    margin: 35px 0 0 0;
+}
+
+.feedback__list select {
+    font-size: 15px;
+    margin: 15px 0 0 0;
+    padding: 10px;
+    width: 100%;
+    -webkit-appearance: none;
+    background-image: url("../img/icons/form-arrow.svg");
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-size: 2.5%;
+}
+
+.feedback__question {
+    font-weight: 700;
+    margin: 35px 0 0 0;
+}
+
+.checkbox {
+    display: flex;
+    padding-top: 20px;
+}
+
+.check__yes,
+.check__not {
+    position: absolute;
+    opacity: 0;
+}
+
+.check__text {
+    padding: 0 40px;
+    position: relative;
+}
+
+.check__text:before {
+    position: absolute;
+    content: "";
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    top: 2px;
+    left: 10px;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+}
+
+.check__not:checked ~ .check__text:before {
+    background-color: white;
+}
+
+.check__yes:checked ~ .check__text:before {
+    background-color: white;
+}
+
+.feedback__text {
+    margin: 35px 0 0 0;
+}
+
+.feedback__text div {
+    font-weight: 700;
+    margin: 0 0 20px 0;
+}
+
+.feedback__text textarea {
+    font-size: 15px;
+    padding: 10px;
+    width: 100%;
+    height: 150px;
+    resize: none;
+}
+
+.feedback__content button {
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    margin: 30px 0 0 0;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 40px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    background-color: #2f969f;
+}
+
+/*!*===================================================================================================*!*/
+
+@media (max-width: 500px) {
+    .feedback__content {
+        align-self: start;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .feedback__title {
+        font-size: 16px;
+    }
+
+    .feedback__text textarea {
+        height: 75px;
+    }
+
+    .content__body {
+        padding: 15px;
+    }
+}
+
+/*!*====== /CONTENT ===================================================================================*!*/

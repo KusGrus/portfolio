@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <div class="content">
+    <app-carousel></app-carousel>
+    <div
+      class="products"
+      *ngIf="products$ | async | filter: search as products; else loading"
+    >
+      <app-product-card
+        [card]="product"
+        *ngFor="let product of products"
+        [ngClass]="{ main: product.main }"
+      ></app-product-card>
+    </div>
+    <ng-template #loading>
+      <div class="loading">
+        <app-loading></app-loading>
+      </div>
+    </ng-template>
+  </div>
+  <nav class="asside">
+    <app-asside-layout (onChange)="search = $event"></app-asside-layout>
+  </nav>
+</div>

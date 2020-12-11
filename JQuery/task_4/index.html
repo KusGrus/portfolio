@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="source/ui-lightness/jquery-ui.css">
+        <link rel="stylesheet" href="css/style.css" />
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <title>Task_2_4</title>
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <div class="container">
+                <form action="#" class="order">
+                    <h1>One-Way Airlines: Lets's make a reservation</h1>
+                    <div class="order__date row">
+                        <label for="date">Pick a departure date</label>
+                        <input type="text" id="date" />
+                    </div>
+                    <div class="order__search row">
+                        <label for="find">Find an airport</label>
+                        <input type="text" id="find" />
+                    </div>
+                    <div class="order__meal row">
+                        <label for="meal">Meal options</label>
+                        <select id="meal">
+                            <option>No meal</option>
+                            <option>Breakfast</option>
+                            <option>Breakfast and Dinner</option>
+                        </select>
+                    </div>
+                    <div class="order__count row">
+                        <span>Number of bags to check</span>
+                        <div class="count__list">
+                            <label for="count1">1</label>
+                            <input type="radio" name="count1" id="count1" />
+                            <label for="count2">2</label>
+                            <input type="radio" name="count1" id="count2" />
+                            <label for="count3">3</label>
+                            <input type="radio" name="count1" id="count3" />
+                        </div>
+                    </div>
+                    <div class="order__type row">
+                        <span>Type of seat you'd like</span>
+                        <div class="type__list">
+                            <label for="type1">Aisle</label>
+                            <input type="checkbox" name="type1" id="type1">
+                            <label for="type2">Window</label>
+                            <input type="checkbox" name="type2" id="type2">
+                            <label for="type3">Exit Row</label>
+                            <input type="checkbox" name="type3" id="type3">
+                            <label for="type4">Any Seat</label>
+                            <input type="checkbox" name="ctype4" id="type4">
+                        </div>
+                    </div>
+                    <div class="order__button row">
+                        <span></span>
+                        <button id="button">Conrinue reservation process<span></span></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="js/script.js"></script>
+
+    </body>
+</html>

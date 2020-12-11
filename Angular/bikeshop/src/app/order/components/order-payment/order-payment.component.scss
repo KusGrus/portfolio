@@ -1,0 +1,86 @@
+.paypal {
+  margin-bottom: 200px;
+}
+
+a {
+  cursor: pointer;
+  color: #000;
+  height: 100%;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 25px;
+  padding: 5px;
+  border-bottom: 1px dashed black;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.remains {
+  padding: 20px;
+  color: #707070;
+  h3 {
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .control-input {
+    margin-top: 50px;
+    max-width: 300px;
+  }
+}
+
+.form-container .field-container:first-of-type {
+  grid-area: name;
+}
+
+.form-container .field-container:nth-of-type(2) {
+  grid-area: number;
+}
+
+.form-container .field-container:nth-of-type(3) {
+  grid-area: expiration;
+}
+
+.form-container .field-container:nth-of-type(4) {
+  grid-area: security;
+}
+
+.field-container {
+  position: relative;
+}
+
+.form-container {
+  display: grid;
+  grid-column-gap: 10px;
+  grid-template-columns: auto auto;
+  grid-template-rows: 90px 90px 90px;
+  grid-template-areas: "name name" "number number" "expiration security";
+  max-width: 400px;
+  padding: 20px;
+  color: #707070;
+}
+
+.form-control {
+  position: relative;
+  &:not(:first-child) {
+    margin-top: 60px;
+  }
+  &:first-child {
+    margin-top: 40px;
+  }
+  p {
+    color: rgb(146, 146, 146);
+    font-size: 16px;
+    text-align: right;
+    margin-bottom: 30px;
+  }
+  .validation {
+    position: absolute;
+    bottom: 3px;
+    left: 0;
+    color: red;
+    font-size: 12px;
+  }
+}

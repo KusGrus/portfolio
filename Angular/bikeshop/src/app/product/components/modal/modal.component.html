@@ -1,0 +1,7 @@
+<ng-container *ngIf="visible">
+  <div class="backdrop" (click)="closeModal()" [@back]></div>
+  <div class="modal" [@box]>
+    <img [src]="image" alt="bike" />
+    <button (click)="closeModal()"></button>
+  </div>
+</ng-container>

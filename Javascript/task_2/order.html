@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/popup.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/order.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Order</title>
+</head>
+<body>
+
+<div class="wrapper">
+    <header class="header">
+        <div class="container">
+            <div class="header__body">
+                <div class="header__top">
+                    <div class="header__logo">
+                        <img src="img/header/logo.png" alt="logo">
+                    </div>
+                    <div class="header__burger"><span></span></div>
+                    <ul class="header__menu">
+                        <li class="menu__item"><a href="" class="link">Shop</a></li>
+                        <li class="menu__item"><a href="" class="link">Tags</a></li>
+                        <li class="menu__item"><a href="" class="link">News</a></li>
+                        <li class="menu__item"><a href="" class="link">Cart</a></li>
+                    </ul>
+                </div>
+                <h1>Let's go ride</h1>
+            </div>
+        </div>
+    </header>
+    <main class="content">
+        <nav class="content__sidebar">
+            <ul class="sidebar__list">
+                <li><a href="index.html" class="sidebar__link link">Home</a></li>
+                <li><a href="about.html" class="sidebar__link link">About us</a></li>
+                <li><a href="contacts.html" class="sidebar__link link">Contacts</a></li>
+                <li><a href="#" class="sidebar__link link">Order</a></li>
+                <li><a href="#" class="sidebar__link link" id="registration">Registration</a></li>
+            </ul>
+        </nav>
+        <article class="content__body">
+            <div class="body__order">
+                <h2>Order registration</h2>
+                <form action="#" class="order">
+                    <div class="block">
+                        <label for="model">Choose model</label>
+                        <div class="field">
+                            <select id="model">
+                                <option>T1000</option>
+                                <option>T2000</option>
+                                <option>T3000</option>
+                                <option>T4000</option>
+                                <option>T5000</option>
+                                <option>T6000</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <label for="comment">Add comment</label>
+                        <div class="field">
+                            <textarea id="comment"></textarea>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <label for="clientname">First name</label>
+                        <div class="field">
+                            <input type="text" id="clientname" placeholder="Name" class="_req">
+                        </div>
+                    </div>
+                    <div class="block">
+                        <label for="clientsurname">Last name</label>
+                        <div class="field">
+                            <input type="text" id="clientsurname" placeholder="Surname" class="_req">
+                        </div> 
+                    </div>
+                    <div class="block">
+                        <label for="address">Address</label>
+                        <div class="field">
+                            <input type="text" id="address" placeholder="Address" class="_req">
+                        </div>
+                    </div>
+                    <div class="block">
+                        <label>State or Region</label>
+                        <div class="field">
+                            <select id="region"></select>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <label for="zip">Zip</label>
+                        <div class="field">
+                            <input type="text" id="zip" placeholder="Zip" class="_req" maxlength="7">
+                        </div>  
+                    </div>
+                    <div class="block">
+                        <label for="phone">Phone</label>
+                        <div class="field">
+                            <input type="text" id="phone" placeholder="8-(xxx)-xxx-xx-xx" class="_req" maxlength="17">
+                        </div> 
+                    </div>
+                    <div class="block">
+                        <label>Delivery Address</label>
+                        <div class="field">
+                            <input type="text" id="delivery" placeholder="Address" class="_req">
+                            <div class="transfer">
+                                <input type="checkbox" id="same" value="adress">
+                                <label for="same">Same address</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <label>Delivery Date</label>
+                        <div class="field deliverydate">
+                            <select id="day"></select>
+                            <select id="month"></select>
+                            <select id="year"></select>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <label>Payment </label>
+                        <div class="field creditcard">
+                            <select id="type" class="card-field"></select>
+                            <input type="text" class="card-field _req" id="cardnumber" placeholder="XXXX XXXX XXXX XXXX" maxlength="19">
+                            <div class="expiration card-field" >
+                                <input type="text" id="expiration" placeholder="XX/XX" class="_req" maxlength="5">
+                                <input type="text" id="cvv" placeholder="CVV" class="_req" maxlength="3">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <label>Create account?</label>
+                        <div class="account field">
+                            <div>
+                                <label for="username">Username</label>
+                                <input type="text" id="username" placeholder="Username">
+                            </div>
+                            <div>
+                                <label for="password">Password</label>
+                                <input type="password" id="password" placeholder="*******">
+                            </div>
+                            <div>
+                                <label for="confirm-password">Confirm password</label>
+                                <input type="password" id="confirm-password" placeholder="*******">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order__button">
+                        <button>Order</button>
+                    </div> 
+                </form>
+            </div>
+        </article>
+    </main>
+    <footer class="footer">
+        <div class="footer__contacts">
+            <ul class="contacts__list">
+                <li>
+                    <a href="https://twitter.com/" target="_blank" class="twitter">
+                        <img src="img/icons/004-twitter.svg" alt="twitter">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.pinterest.ru/" target="_blank" class="pinterest">
+                        <img src="img/icons/001-pinterest.svg" alt="pinterest">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://ru-ru.facebook.com/" target="_blank" class="facebook">
+                        <img src="img/icons/002-facebook-logo.svg" alt="facebook">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/" target="_blank" class="instagram">
+                        <img src="img/icons/005-instagram.svg" alt="instagram">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.tumblr.com/" target="_blank" class="tumblr">
+                        <img src="img/icons/003-tumblr.svg" alt="twtumblritter">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer__text">
+            <span>Create</span>
+            <span>Live</span>
+            <span>Go</span>
+        </div>
+    </footer>
+    <div class="popup">
+        <div class="popup__close">
+            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	        width="612.043px" height="612.043px" viewBox="0 0 612.043 612.043" style="enable-background:new 0 0 612.043 612.043;"
+	        xml:space="preserve">
+	            <g id="cross">
+			        <path d="M397.503,306.011l195.577-195.577c25.27-25.269,25.27-66.213,0-91.482c-25.269-25.269-66.213-25.269-91.481,0
+				L306.022,214.551L110.445,18.974c-25.269-25.269-66.213-25.269-91.482,0s-25.269,66.213,0,91.482L214.54,306.033L18.963,501.61
+				c-25.269,25.269-25.269,66.213,0,91.481c25.269,25.27,66.213,25.27,91.482,0l195.577-195.576l195.577,195.576
+				c25.269,25.27,66.213,25.27,91.481,0c25.27-25.269,25.27-66.213,0-91.481L397.503,306.011z"/>
+	            </g>
+            </svg>
+
+        </div>
+        <div class="popup__title">Registration</div>
+        <form action="">
+            <div class="user__name">
+                <label for="name">Name</label>
+                <input class="_req" type="text" id="name" placeholder="Enter name...">
+            </div>
+            <div class="user__email">
+                <label for="email">Email</label>
+                <input class="_req" type="text" id="email" placeholder="example@mail.com">
+            </div>
+            <div class="user__pswd">
+                <label for="pswd">Password</label>
+                <input class="_req" type="new-password" id="pswd" placeholder="Password">
+            </div>
+            <div class="user__confirm">
+                <label for="confirm">Confirm password</label>
+                <input class="_req" type="new-password" id="confirm" placeholder="Confirm password">
+            </div>
+            <div class="user__button">
+                <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                </fb:login-button>
+                <button type="submit">Complete</button>
+            </div> 
+        </form>
+
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="js/popup.js"></script>
+<script src="js/order.js"></script>
+
+</body>
+</html>

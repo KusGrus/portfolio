@@ -1,0 +1,386 @@
+@charset "UTF-8";
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  min-height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*--------------------*/
+.container {
+  height: 100%;
+  font-size: 18px;
+  font-family: Lato;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 10px;
+}
+
+.account {
+  position: relative;
+  padding: 40px;
+  border: 1px solid #a8a8a8;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 800px;
+  margin: 0 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.account h1 {
+  position: absolute;
+  top: -0.6em;
+  left: 25%;
+  background-color: #fff;
+}
+
+@media (max-width: 767px) {
+  .account h1 {
+    font-size: calc(20px + 17 * ((100vw - 320px) / 1200));
+  }
+}
+
+@media (min-width: 767px) {
+  .account h1 {
+    font-size: calc(20px + 10 * (100vw / 1200));
+  }
+}
+
+.account .field {
+  font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.account .field label {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 25%;
+          flex: 0 1 25%;
+  text-align: right;
+  margin-right: 20px;
+}
+
+@media (max-width: 767px) {
+  .account .field label {
+    font-size: calc(16px + 3.4 * ((100vw - 320px) / 1200));
+  }
+}
+
+@media (min-width: 767px) {
+  .account .field label {
+    font-size: calc(16px + 2 * (100vw / 1200));
+  }
+}
+
+.account .field input {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 60%;
+          flex: 0 1 60%;
+  border: 1px solid #dbdbdb;
+  padding: 10px 20px;
+  font-size: 18px;
+}
+
+.account .field input:hover, .account .field input:active {
+  border-color: black;
+}
+
+.account .field:not(:first-child) {
+  margin-top: 30px;
+}
+
+.account .property label {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.account .property .properties {
+  margin-left: 10px;
+  font-weight: 400;
+}
+
+.account .property .properties .option:not(:first-child) {
+  margin-top: 15px;
+}
+
+.account .property .properties .option label {
+  margin-left: 15px;
+}
+
+.account .property .properties .option input {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+
+.account .submit {
+  margin-top: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.account .submit button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  background-color: #6fbbfa;
+}
+
+@media (max-width: 767px) {
+  .account .submit button {
+    font-size: calc(16px + 3.4 * ((100vw - 320px) / 1200));
+  }
+}
+
+@media (min-width: 767px) {
+  .account .submit button {
+    font-size: calc(16px + 2 * (100vw / 1200));
+  }
+}
+
+.account .submit button:hover {
+  background-color: #51adf8;
+}
+
+.account .submit button:active {
+  background-color: #2a9bf8;
+}
+
+.storage {
+  margin-top: 75px;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr;
+  -ms-grid-columns: (24%)[4];
+      grid-template: 1fr/repeat(4, 24%);
+  gap: 1%;
+}
+
+.storage .profile {
+  overflow: hidden;
+  position: relative;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #000;
+  background-color: #e4e4e4;
+}
+
+.storage .profile h1 {
+  text-align: center;
+  font-weight: 700;
+}
+
+@media (max-width: 767px) {
+  .storage .profile h1 {
+    font-size: calc(18px + 6.8 * ((100vw - 320px) / 1200));
+  }
+}
+
+@media (min-width: 767px) {
+  .storage .profile h1 {
+    font-size: calc(18px + 4 * (100vw / 1200));
+  }
+}
+
+.storage .profile__item {
+  margin: 20px 0 0 5px;
+}
+
+.storage .profile__item h2 {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.storage .profile__item span, .storage .profile__item ul {
+  margin-left: 15px;
+}
+
+.storage .profile__item li {
+  margin-top: 5px;
+}
+
+.storage .close {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  right: 1%;
+  top: 1%;
+  background: url("../img/close.svg") no-repeat center;
+  background-size: 15px;
+  opacity: 0.3;
+}
+
+.storage .close:hover {
+  opacity: 1;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.delete {
+  opacity: 0;
+  -webkit-transition: opacity 0.7s ease-out;
+  transition: opacity 0.7s ease-out;
+}
+
+input._error {
+  -webkit-box-shadow: 0 0 3px #fc1b1b;
+          box-shadow: 0 0 3px #fc1b1b;
+}
+
+input._error:hover, input._error:focus {
+  border-color: #ff2e2e;
+}
+
+@media (max-width: 1200px) {
+  .storage {
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: (32.333%)[3];
+        grid-template: 1fr/repeat(3, 32.333%);
+  }
+}
+
+@media (max-width: 800px) {
+  .storage {
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: (49%)[2];
+        grid-template: 1fr/repeat(2, 49%);
+  }
+}
+
+@media (max-width: 600px) {
+  .account {
+    padding: 20px;
+  }
+  .account h1 {
+    left: 15%;
+  }
+  .account .field {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+  }
+  .account .field label {
+    text-align: left;
+  }
+  .account .field input {
+    margin-top: 10px;
+  }
+  .account .property .properties {
+    margin: 20px 0 0 0;
+    font-weight: 400;
+  }
+  .account .property .option {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .account .property .option label {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 90%;
+            flex: 0 1 90%;
+    margin: 0;
+  }
+  .account .property .option input {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 10%;
+            flex: 0 0 10%;
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+    margin: 0;
+  }
+  .storage {
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: 1fr;
+        grid-template: 1fr / 1fr;
+  }
+}

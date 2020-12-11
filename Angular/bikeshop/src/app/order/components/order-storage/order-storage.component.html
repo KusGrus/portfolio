@@ -1,0 +1,77 @@
+<div class="content">
+  <div class="storage">
+    <div
+      class="storage__item"
+      *ngFor="let item of storage; let idx = index"
+      [@box]
+    >
+      <div class="image">
+        <img [src]="item.information.images[0]" alt="bike" />
+      </div>
+      <div class="infromation">
+        <div class="title">
+          {{ item.name }}
+          <div
+            class="link"
+            [routerLink]="['/product', item.information.id]"
+          ></div>
+        </div>
+        <div class="description">
+          {{ item.information.description | limit: 30 }}
+        </div>
+      </div>
+      <div class="appearance">
+        <span>Color:</span>
+        <select (change)="changeColor(idx, colorBox.value)" #colorBox>
+          <option
+            [value]="color"
+            *ngFor="let color of item.information.color"
+            [selected]="color == item.color ? 'selected' : ''"
+          >
+            {{ color }}
+          </option>
+        </select>
+      </div>
+      <div class="appearance">
+        <span>Size:</span>
+        <select (change)="changeSize(idx, sizeBox.value)" #sizeBox>
+          <option
+            [value]="size"
+            *ngFor="let size of item.information.size"
+            [selected]="size == item.size ? 'selected' : ''"
+          >
+            {{ size }}
+          </option>
+        </select>
+      </div>
+      <div class="count">
+        <div class="minus" (click)="decrease(idx)"></div>
+        <input onlyDigit type="text" [value]="item.count" maxlength="3" (input)="manualCount($event, idx)">
+        <div class="plus" (click)="increase(idx)"></div>
+      </div>
+      <div class="price" *ngIf="item.discount; else withoutDiscount">
+        <div class="old">
+          {{
+            item.information.price * item.count
+              | currency: "CAD":"symbol-narrow":".0"
+          }}
+        </div>
+        <div class="new">
+          {{
+            item.price * (1 - item.discount / 100) * item.count
+              | currency: "CAD":"symbol-narrow":".0"
+          }}
+        </div>
+      </div>
+      <ng-template #withoutDiscount>
+        <div class="price standalone">
+          {{ item.price * item.count | currency: "CAD":"symbol-narrow":".0" }}
+        </div>
+      </ng-template>
+      <div class="delte" (click)="deleteItem(item.id)">&times;</div>
+    </div>
+  </div>
+  <div class="store">
+    <app-order-select (onChoose)="addItem($event)"></app-order-select>
+  </div>
+</div>

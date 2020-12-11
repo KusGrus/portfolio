@@ -1,0 +1,286 @@
+<div class="wrapper" *ngIf="storage.length; else empty">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-page" *ngIf="indexPage === 1">
+      <div class="page-header">
+        <h1>Your shopping cart:</h1>
+        <div class="trash" (click)="clearCart()"></div>
+      </div>
+      <div class="page-body">
+        <div class="form-control">
+          <app-order-storage
+            formControlName="cart"
+            [(ngModel)]="storage"
+            (ngModelChange)="handle()"
+          ></app-order-storage>
+        </div>
+        <div class="form-control">
+          <div class="total">
+            <div>Total:</div>
+            <span>{{ total | currency: "CAD":"symbol-narrow":".0" }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="page-buttons">
+        <button
+          class="btn"
+          (click)="nextPage()"
+          [disabled]="!total"
+          [ngClass]="{ 'btn-inActive': !total }"
+        >
+          Next Step
+        </button>
+      </div>
+    </div>
+
+    <div class="form-page" *ngIf="indexPage === 2" formGroupName="location">
+      <div class="page-header">
+        <h1>Where to deliver the product?</h1>
+      </div>
+      <div class="page-body">
+        <div class="form-control">
+          <div class="control-input">
+            <input
+              onlyLetter
+              type="text"
+              placeholder=" "
+              formControlName="country"
+              [ngClass]="{
+                error:
+                  form.controls.location.get('country').invalid &&
+                  form.controls.location.get('country').touched,
+                success: form.controls.location.get('country').valid
+              }"
+            />
+            <label>Country</label>
+            <div
+              class="validation"
+              *ngIf="
+                form.controls.location.get('country').invalid &&
+                form.controls.location.get('country').touched
+              "
+            >
+              <small
+                *ngIf="form.controls.location.get('country').errors.required"
+                >Required field!</small
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="form-control">
+          <div class="control-input">
+            <input
+              onlyLetter
+              type="text"
+              placeholder=" "
+              formControlName="city"
+              [ngClass]="{
+                error:
+                  form.controls.location.get('city').invalid &&
+                  form.controls.location.get('city').touched,
+                success: form.controls.location.get('city').valid
+              }"
+            />
+            <label>City</label>
+            <div
+              class="validation"
+              *ngIf="
+                form.controls.location.get('city').invalid &&
+                form.controls.location.get('city').touched
+              "
+            >
+              <small *ngIf="form.controls.location.get('city').errors.required"
+                >Required field!</small
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="form-control">
+          <div class="control-input">
+            <input
+              type="text"
+              placeholder=" "
+              formControlName="address"
+              [ngClass]="{
+                error:
+                  form.controls.location.get('address').invalid &&
+                  form.controls.location.get('address').touched,
+                success: form.controls.location.get('address').valid
+              }"
+            />
+            <label>Address</label>
+            <div
+              class="validation"
+              *ngIf="
+                form.controls.location.get('address').invalid &&
+                form.controls.location.get('address').touched
+              "
+            >
+              <small
+                *ngIf="form.controls.location.get('address').errors.required"
+                >Required field!</small
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page-buttons">
+        <button (click)="previousPage()" class="btn">Previous Step</button>
+        <button
+          (click)="nextPage()"
+          class="btn"
+          [disabled]="form.controls.location.invalid"
+          [ngClass]="{ 'btn-inActive': form.controls.location.invalid }"
+        >
+          Next Step
+        </button>
+      </div>
+    </div>
+
+    <div class="form-page" *ngIf="indexPage === 3">
+      <div class="page-header">
+        <h1>Which payment method would you prefer?</h1>
+      </div>
+      <div class="page-body">
+        <div class="form-control">
+          <app-order-payment
+            formControlName="payment"
+            [(ngModel)]="payment"
+          ></app-order-payment>
+        </div>
+      </div>
+      <div class="page-buttons">
+        <button (click)="previousPage()" class="btn">Previous Step</button>
+        <button
+          (click)="nextPage()"
+          class="btn"
+          [disabled]="!form.get('payment').value.valid"
+          [ngClass]="{
+            'btn-inActive': !form.get('payment').value.valid
+          }"
+        >
+          Next Step
+        </button>
+      </div>
+    </div>
+
+    <div class="form-page" *ngIf="indexPage === 4" formGroupName="delivery">
+      <div class="page-header">
+        <h1>When can we deliver your order?</h1>
+      </div>
+      <div class="page-body">
+        <div class="form-control">
+          <div class="contol-radio-column">
+            <input
+              checked
+              type="radio"
+              id="today"
+              value="today"
+              formControlName="date"
+            />
+            <span></span>
+            <label for="today">Today</label>
+          </div>
+        </div>
+
+        <div class="form-control">
+          <div class="contol-radio-column">
+            <input
+              type="radio"
+              id="tomorrow"
+              value="tomorrow"
+              formControlName="date"
+            />
+            <span></span>
+            <label for="tomorrow">Tomorrow</label>
+          </div>
+        </div>
+
+        <div class="form-control">
+          <div class="contol-radio-column">
+            <input
+              type="radio"
+              id="other"
+              value="custom"
+              formControlName="date"
+            />
+            <span></span>
+            <label for="other">Other day</label>
+          </div>
+        </div>
+
+        <div
+          class="form-control datapicker-control"
+          *ngIf="form.get('delivery').get('date').value === 'custom'"
+        >
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="customDate"
+            class="datapicker"
+            [ngClass]="{
+              error:
+                form.get('delivery').get('customDate').invalid &&
+                form.get('delivery').get('customDate').touched,
+              success: form.get('delivery').get('customDate').valid
+            }"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker min="date"></mat-datepicker>
+          <div
+            class="validation"
+            *ngIf="
+              form.get('delivery').get('customDate').invalid &&
+              form.get('delivery').get('customDate').touched
+            "
+          >
+            <small
+              *ngIf="form.get('delivery').get('customDate').errors.calendarDate"
+              >Invalid date!</small
+            >
+          </div>
+        </div>
+      </div>
+      <div class="page-buttons">
+        <button (click)="previousPage()" class="btn">Previous Step</button>
+        <button
+          type="submit"
+          class="btn"
+          [disabled]="
+            form.get('delivery').invalid &&
+            form.get('delivery').get('date').value === 'custom'
+          "
+          [ngClass]="{
+            'btn-inActive':
+              form.get('delivery').invalid &&
+              form.get('delivery').get('date').value === 'custom'
+          }"
+        >
+          Place your order
+        </button>
+      </div>
+    </div>
+
+    <div class="form-page" *ngIf="indexPage === 5">
+      <div class="page-header">
+        <h1>Your order:</h1>
+      </div>
+      <div class="page-body">
+        <app-order-result [items]="form.value"></app-order-result>
+      </div>
+      <div class="page-buttons">
+        <button [routerLink]="['/']" class="btn">Success</button>
+      </div>
+    </div>
+  </form>
+</div>
+<ng-template #empty>
+  <div class="block-empty">
+    <img src="../../../../assets/image/icons/empty-cart.png" alt="empty" />
+    <a [routerLink]="['/']">Go to store</a>
+  </div>
+</ng-template>

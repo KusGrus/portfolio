@@ -1,0 +1,49 @@
+<div class="wrapper">
+  <div class="block__line column">
+    <div class="block__line-title table">Your product list:</div>
+    <div class="block__line-text">
+      <div class="item" *ngFor="let item of _order.product; let idx = index">
+        <div class="item__line index">{{ idx + 1 }}</div>
+        <div class="item__line name">{{ item.name }}</div>
+        <div class="item__line column count">
+          <h3>Count</h3>
+          <div class="b">{{ item.count }}</div>
+        </div>
+        <div class="item__line column color">
+          <h3>Color</h3>
+          <span> {{ item.color }}</span>
+        </div>
+        <div class="item__line column size">
+          <h3>Size</h3>
+          <span> {{ item.size }}</span>
+        </div>
+        <div class="item__line price">
+          {{ item.price | currency: "CAD":"symbol-narrow":".0" }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="block__line">
+    <div class="block__line-title">Delivery date:</div>
+    <div class="block__line-text">
+      {{ _order.delivery.customDate | date: "dd MMMM yyyy" }}
+    </div>
+  </div>
+  <div class="block__line">
+    <div class="block__line-title">Delivery location:</div>
+    <div class="block__line-text">
+      {{ _order.location.country }}, {{ _order.location.city }}, 
+      {{ _order.location.address }}
+    </div>
+  </div>
+  <div class="block__line">
+    <div class="block__line-title">Payment method:</div>
+    <div class="block__line-text">{{ _order.payment.type | uppercase }}</div>
+  </div>
+  <div class="block__line">
+    <div class="block__line-title">Total:</div>
+    <div class="block__line-text">
+      {{ total | currency: "CAD":"symbol-narrow":".0" }}
+    </div>
+  </div>
+</div>

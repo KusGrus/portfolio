@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #000000;
+}
+
+.slider {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.navigation {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.bar {
+    height: 20px;
+    width: 20px;
+    margin: 10px;
+    cursor: pointer;
+    border: 3px solid #ffffff;
+    opacity: 0.7;
+    border-radius: 50%;
+    transition: all .4s ease;
+}
+
+.bar:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+input[name='radio'] {
+    position: absolute;
+    visibility: hidden;
+}
+
+.slides {
+    width: 300%;
+    height: 100%;
+    display: flex;
+}
+
+.slide {
+    position: relative;
+    width: 33.333%;
+    transition: all .6s ease;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+}
+
+.slide__text {
+    color: white;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20%;
+    text-align: center;
+}
+
+.slide__text h1 {
+    text-shadow: #3e3e3e 1px 0 10px;
+    font-size: 40px;
+    padding: 20px;
+}
+
+.slide__text p {
+    font-size: 25px;
+    line-height: 1.5;
+}
+
+.controller {
+    position: absolute;
+    display: none;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 2%;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    z-index: 1000;
+}
+.controller:before, .controller:after {
+    position: absolute;
+    opacity: 0.5;
+    content: "";
+    background-color: #fff;
+    height: 3px;
+    width: 75%;
+    transition: all 0.1s ease 0s;
+}
+
+.controller:hover:before, .controller:hover:after {
+    opacity: 1;
+    transition: all 1s ease 0s;
+}
+
+.controller:before {
+    top: 21%;
+    transform: rotate(-45deg);
+}
+.controller:after {
+    bottom: 21%;
+    transform: rotate(+45deg);
+}
+
+.controller:hover:before {
+    transform: rotate(-765deg);
+}
+.controller:hover:after {
+    transform: rotate(765deg);
+}
+
+#slide1:checked ~ .s1 {
+    margin-left: 0;
+}
+
+#slide2:checked ~ .s1 {
+    margin-left: -33.333%;
+}
+
+#slide3:checked ~ .s1 {
+    margin-left: -66.667%;
+}
+
+#slide1:checked ~ .navigation .bar1,
+#slide2:checked ~ .navigation .bar2,
+#slide3:checked ~ .navigation .bar3 {
+    background-color: #fff;
+}
+
+input[type=radio]#slide1:checked ~ #controller2,
+input[type=radio]#slide2:checked ~ #controller3,
+input[type=radio]#slide3:checked ~ #controller1{
+    left: 95%;
+    display: block;
+    top: 47.5%;
+    transform: scaleX(-1);
+}
+
+input[type=radio]#slide2:checked ~ #controller1,
+input[type=radio]#slide3:checked ~ #controller2,
+input[type=radio]#slide1:checked ~ #controller3{
+    left: 2%;
+    top: 50%;
+    display: block;
+}

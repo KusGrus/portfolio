@@ -1,0 +1,27 @@
+<div class="carousel">
+  <div class="carousel__btns">
+    <i class="left" (click)="manualBack()"></i>
+    <i class="right" (click)="manualNext()"></i>
+  </div>
+  <div class="carousel__content">
+    <ng-container *ngFor="let item of items">
+      <div
+        class="carousel__content-item"
+        [ngStyle]="{
+          'background-image': 'url(' + item.image + ')',
+          'margin-left': item.marginLeft + '%'
+        }"
+      >
+        <h1>{{ item.title }}</h1>
+      </div>
+    </ng-container>
+  </div>
+  <div class="carousel__steps">
+    <div
+      class="carousel__steps-step"
+      [class.active]="currentPosition === idx"
+      *ngFor="let item of items; let idx = index"
+      (click)="manualCurrentPosition(idx)"
+    ></div>
+  </div>
+</div>

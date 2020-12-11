@@ -1,0 +1,23 @@
+<div>
+  <ul>
+    <li>
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Home</a
+      >
+    </li>
+    <li><a routerLink="/about" routerLinkActive="active">About us</a></li>
+    <li><a routerLink="/contact" routerLinkActive="active">Contacts</a></li>
+    <li>
+      <a routerLink="/order" routerLinkActive="active">Order</a>
+      <ng-container *ngIf="cart.getCartCount()">
+        <span>{{ cart.getCartCount() }}</span>
+      </ng-container>
+    </li>
+    <li><a routerLink="/add" routerLinkActive="active">Add new item</a></li>
+    <li><a routerLink="/management" routerLinkActive="active">Management</a></li>
+    <li><a routerLinkActive="active">Registration</a></li>
+  </ul>
+</div>

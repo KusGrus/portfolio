@@ -1,0 +1,60 @@
+$itemHeight: 40px;
+
+.select {
+//   overflow: hidden;
+  width: 100%;
+  position: relative;
+  &__header {
+    font-size: 16px;
+    z-index: 3;
+    position: relative;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    display: flex;
+  }
+  &__current {
+    line-height: 20px;
+    padding: 8px 10px;
+  }
+  &__icon {
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    right: 1%;
+    top: 50%;
+    background-image: url("../../../../assets/image/icons/select-arrow.svg");
+    transform: rotate(180deg) translateY(50%);
+    transition: all 0.3s ease;
+  }
+  &__body {
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: calc($itemHeight - 3px);
+    max-height: 300px;
+    overflow: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: 0;
+  }
+  &__item {
+    cursor: pointer;
+    position: relative;
+    padding: 0 15px;
+    line-height: $itemHeight;
+    display: flex;
+    align-items: center;
+    &:hover {
+      background-color: rgb(247, 247, 247);
+    }
+    &:not(:first-child) {
+      border-top: 1px dashed rgb(184, 184, 184);
+    }
+  }
+
+  &.is-active .select__icon {
+    transform: rotate(0deg) translateY(-50%);
+  }
+}

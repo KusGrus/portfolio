@@ -1,0 +1,132 @@
+<div class="content">
+  <form #feedback="ngForm" novalidate (click)="show(feedback)">
+    <h1>Feedback</h1>
+
+    <div class="form-control">
+      <div class="control-input">
+        <input
+          onlyLetter
+          type="text"
+          placeholder=" "
+          name="name"
+          ngModel
+          required
+          #namefield="ngModel"
+          [ngClass]="{
+            error: !namefield.valid && namefield.touched,
+            success: namefield.valid
+          }"
+        />
+        <label>Name</label>
+        <div class="validation" *ngIf="!namefield.valid && namefield.touched">
+          <small>Required field!</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <div class="control-input">
+        <input
+          onlyLetter
+          type="text"
+          placeholder=" "
+          name="surname"
+          ngModel
+          required
+          #surnamefield="ngModel"
+          [ngClass]="{
+            error: !surnamefield.valid && surnamefield.touched,
+            success: surnamefield.valid
+          }"
+        />
+        <label>Surname</label>
+        <div
+          class="validation"
+          *ngIf="!surnamefield.valid && surnamefield.touched"
+        >
+          <small>Required field!</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <div class="control-input">
+        <input
+          type="text"
+          placeholder=" "
+          name="email"
+          ngModel
+          required
+          #emailfield="ngModel"
+          [ngClass]="{
+            error: !emailfield.valid && emailfield.touched,
+            success: emailfield.valid
+          }"
+        />
+        <label>E-mail</label>
+        <div class="validation" *ngIf="!emailfield.valid && emailfield.touched">
+          <small>Required field!</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-control column">
+      <h3>How often do you visit our site?</h3>
+      <app-select
+        [data]="select"
+        name="frequency"
+        ngModel
+        #frequencyfield="ngModel"
+        selectNonDeafult
+        [ngClass]="{ 'required-select': frequencyfield.touched && !frequencyfield.valid }"
+      ></app-select>
+      <div class="validation" *ngIf="frequencyfield.touched && frequencyfield.errors?.selectNonDeafult">
+        <small>Required field!</small>
+      </div>
+    </div>
+    
+    <div class="form-control">
+      <h3>Are you subscribed to the e-mail newsletter?</h3>
+      <div class="row-container">
+        <div class="contol-radio-row">
+          <input
+            type="radio"
+            id="yes"
+            [value]="true"
+            name="subscribe"
+            [(ngModel)]="subscribe"
+          />
+          <span></span>
+          <label for="yes">Yes</label>
+        </div>
+        <div class="contol-radio-row">
+          <input
+            checked
+            type="radio"
+            id="not"
+            [value]="false"
+            name="subscribe"
+            [(ngModel)]="subscribe"
+          />
+          <span></span>
+          <label for="not">No</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <div class="control-input">
+        <textarea placeholder=" " name="comment" ngModel></textarea>
+        <label>Comment</label>
+      </div>
+    </div>
+    <button
+      class="btn"
+      (click)="submit(feedback)"
+      [disabled]="!feedback.valid"
+      [ngClass]="{ 'btn-inActive': !feedback.valid }"
+    >
+      Send
+    </button>
+  </form>
+</div>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="css/style.css" />
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+        <title>Task_1_8</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="sending">
+                <form id="send">
+                    <div class="sending__name">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="username" placeholder="Ivan Ivanov" />
+                    </div>
+                    <div class="sending__email">
+                        <label for="email">E-mail</label>
+                        <input type="text" id="email" name="useremail" placeholder="example@mail.com" />
+                    </div>
+                    <div class="sending__description">
+                        <label for="text">Description</label>
+                        <textarea id="text" name="usertext" placeholder="Enter some description..."></textarea>
+                    </div>
+                    <div class="sending__button">
+                        <button type="submit" id="send-button">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>

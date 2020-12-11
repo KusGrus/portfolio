@@ -1,0 +1,170 @@
+@import "_nullstyle";
+
+.container {
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.corusel {
+    margin: auto;
+    position: relative;
+    width: 100%;
+    height: 700px;
+    .navigation {
+        display: flex;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 3%;
+        .point {
+            width: 20px;
+            height: 5px;
+            background-color: #fff;
+            opacity: 0.5;
+            border-radius: 5px;
+            &:not(:first-child) {
+                margin-left: 15px;
+            }
+        }
+        .current {
+            opacity: 1;
+        }
+    }
+}
+
+.slider {
+    overflow: hidden;
+    border-radius: 5px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.75);
+    img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .first {
+        transition: all 1s ease;
+        margin-left: 0;
+    }
+    .magnifier {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -30%);
+        width: 30%;
+        height: 30%;
+        svg {
+            transform: translateY(50%);
+            opacity: 0;
+            max-height: 30%;
+            fill: white;
+            cursor: pointer;
+        }
+        &:hover svg {
+            opacity: 1;
+        }
+    }
+}
+
+button {
+    background-color: transparent;
+}
+
+.previous,
+.next {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    border: 25px solid transparent;
+}
+
+.previous {
+    left: 0;
+    border-right: 30px solid rgb(255, 255, 255);
+}
+.next {
+    right: 0;
+    border-left: 30px solid rgb(255, 255, 255);
+}
+
+.previous:active,
+.next:active {
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+.modal {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    &__shadow {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        opacity: 0;
+        transition: opacity 0.5s ease-in;
+    }
+    &__img {
+        position: relative;
+        border: 10px solid rgb(255, 255, 255);
+        left: 50%;
+        top: -50%;
+        transform: translate(-50%, -50%);
+        width: 1300px;
+        height: 800px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .close {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            right: -50px;
+            top: -50px;
+            background-image: url("../img/close.svg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 50%;
+            cursor: pointer;
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+    }
+}
+
+.open {
+    .modal__shadow {
+        opacity: 0.8;
+        transition: opacity 0.5s ease-in;
+    }
+    .modal__img {
+        top: 50%;
+        transition: all 0.8s ease-out;
+    }
+}
+
+.close {
+    .modal__shadow {
+        opacity: 0;
+        transition: opacity 0.5s ease-in;
+    }
+    .modal__img {
+        top: 200%;
+        transition: all 0.8s ease-out;
+    }
+}

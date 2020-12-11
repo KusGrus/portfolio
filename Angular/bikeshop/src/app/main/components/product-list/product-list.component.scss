@@ -1,0 +1,40 @@
+.wrapper {
+  display: flex;
+}
+
+.content {
+  width: 100%;
+}
+.products {
+  width: 100%;
+  display: grid;
+  grid-template: 1fr / 1fr 1fr 1fr;
+  gap: 20px 15px;
+}
+.asside {
+  flex: 0 0 20%;
+}
+.main {
+  grid-column: span 2;
+}
+
+@media (max-width: 1250px) {
+  .wrapper {
+    flex-direction: column-reverse;
+  }
+  .asside {
+    margin-bottom: 25px;
+  }
+  .products {
+    grid-template: 1fr / 1fr 1fr;
+    gap: 20px 15px;
+  }
+}
+@media (max-width: 600px) {
+  .products {
+    grid-template: 1fr / 1fr;
+  }
+  .main {
+    grid-column: span 1;
+  }
+}

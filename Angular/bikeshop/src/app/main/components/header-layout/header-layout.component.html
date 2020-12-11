@@ -1,0 +1,22 @@
+<div class="bgi">
+  <div class="container">
+    <div class="header">
+      <div class="header__body">
+        <div class="header__body-logo">
+          <img src="../../../../assets/image/header/logo.png" alt="logo" />
+        </div>
+        <div class="header__body-burger"><span></span></div>
+        <ul>
+          <li routerLink="/"><a>Shop</a></li>
+          <li><a>Tags</a></li>
+          <li><a>News</a></li>
+          <li routerLink="/order">
+            <a>Cart</a>
+            <span *ngIf="cart.getCartCount()">{{ cart.getCartCount() }}</span>
+          </li>
+        </ul>
+      </div>
+      <h1>Let's go ride</h1>
+    </div>
+  </div>
+</div>

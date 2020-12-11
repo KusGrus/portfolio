@@ -1,0 +1,8 @@
+<div class="content" *ngIf="bike$ | async as product; else loading">
+  <app-product-page-preview [bike]="product" class="block"></app-product-page-preview>
+  <app-product-page-description [bike]="product" class="block"></app-product-page-description>
+</div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

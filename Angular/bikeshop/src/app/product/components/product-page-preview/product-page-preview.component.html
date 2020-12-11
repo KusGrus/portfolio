@@ -1,0 +1,27 @@
+<div class="preview">
+  <div class="preview__main" (click)="showModal()">
+    <img [src]="bike.images[0]" alt="bike" #image />
+    <span>zoom</span>
+  </div>
+  <div class="preview__extra">
+    <div class="preview__extra-colors">
+      <span
+        *ngFor="let color of bike.color"
+        [color]="color"
+        (click)="changeColor(color)"
+        [ngClass]="{ active: color === activeColor }"
+      ></span>
+    </div>
+    <div class="preview__extra-images">
+      <img
+        [src]="image"
+        alt="bike"
+        *ngFor="let image of bike.images"
+        (click)="changeImage($event)"
+        [ngClass]="{ active: image === activeImage }"
+      />
+    </div>
+  </div>
+</div>
+
+<ng-container #modal></ng-container>

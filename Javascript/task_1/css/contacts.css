@@ -1,0 +1,332 @@
+/*!*====== CONTENT ===================================================================================*!*/
+
+.content {
+    flex: 1 1 auto;
+    display: flex;
+}
+
+.content__sidebar {
+    padding: 20px 15px;
+    flex: 0 1 12%;
+}
+
+.sidebar__list {
+    padding-top: 40px;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar__list li {
+    padding: 30px 0;
+}
+
+.sidebar__link {
+    font-size: calc(12px + (3 + 3 * 0.7) * ((100vw - 320px) / 1200));
+    color: black;
+    position: relative;
+}
+
+/*!*==================================================================================================*!*/
+
+.content {
+    flex: 1 1 auto;
+    display: flex;
+}
+
+.content__sidebar {
+    padding: 20px 15px;
+    flex: 0 1 12%;
+}
+
+.sidebar__list {
+    padding-top: 40px;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar__list li {
+    padding: 30px 0;
+}
+
+.sidebar__link {
+    font-size: calc(12px + (3 + 3 * 0.7) * ((100vw - 320px) / 1200));
+    color: black;
+    position: relative;
+}
+
+/*!*==================================================================================================*!*/
+
+.content__body {
+    flex: 1 1 auto;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feedback__content {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    position: relative;
+    font-size: 16px;
+    background-color: #4d4959;
+    border-radius: 10px;
+    color: white;
+}
+
+.feedback__title {
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.feedback__title::after {
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 10%;
+    background-color: white;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.3s ease 0s;
+}
+
+.feedback__list {
+    font-weight: 700;
+    margin: 35px 0 0 0;
+}
+
+.feedback__list select {
+    font-size: 15px;
+    margin: 15px 0 0 0;
+    padding: 10px;
+    width: 100%;
+    -webkit-appearance: none;
+    background-image: url("../img/icons/form-arrow.svg");
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-size: 2.5%;
+}
+
+.feedback__question {
+    font-weight: 700;
+    margin: 35px 0 0 0;
+}
+
+.checkbox {
+    display: flex;
+    padding-top: 20px;
+}
+
+.check__yes, .check__not {
+    position: absolute;
+    opacity: 0;
+}
+
+.check__text {
+    padding: 0 40px;
+    position: relative;
+}
+
+.check__text:before {
+    position: absolute;
+    content: "";
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    top: 2px;
+    left: 10px;
+    height: 15px;
+    width: 15px;;
+    border-radius: 50%;
+}
+
+.check__not:checked ~ .check__text:before {
+    background-color: white;
+}
+
+.check__yes:checked ~ .check__text:before {
+    background-color: white;
+}
+
+.feedback__text {
+    margin: 35px 0 0 0;
+}
+
+.feedback__text div {
+    font-weight: 700;
+    margin: 0 0 20px 0;
+}
+
+.feedback__text textarea {
+    font-size: 15px;
+    padding: 10px;
+    width: 100%;
+    height: 150px;
+    resize: none;
+}
+
+.feedback__content button {
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    margin: 30px 0 0 0;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 40px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    background-color: #2f969f;
+}
+
+
+
+/*!*==================================================================================================*!*/
+
+.content__aside {
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+    flex: 0 1 20%;
+    align-items: center;
+}
+
+.aside__search {
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    margin: 60px 0 0 0;
+    font-size: 13px;
+    line-height: 40px;
+}
+
+.aside__search label {
+    position: relative;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: black;
+    font-size: calc(12px + (3 + 3 * 0.7) * ((100vw - 320px) / 1200));
+    letter-spacing: 1.5px;
+}
+
+.aside__search label:hover {
+    color: burlywood;
+}
+
+.search__block {
+    display: flex;
+}
+
+.aside__search input {
+    font-size: 16px;
+    width: 80%;
+    padding: 15px;
+    color: #9fa1a0;
+}
+
+.aside__search input:hover, .aside__search input:focus {
+    box-shadow: inset 0 0 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+.aside__search button {
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    width: 20%;
+    background: burlywood url("../img/icons/search.svg") center/35% no-repeat;
+}
+
+.aside__search button:active {
+    box-shadow: inset 0 0 5px 1px rgba(0, 0, 0, 0.5);
+}
+
+.aside__search button:hover {
+    box-shadow: inset 0 0 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 1200px) {
+
+    .content__sidebar {
+        padding: 20px 15px;
+        flex: 0 1 15%;
+    }
+
+}
+
+@media (max-width: 1000px) {
+
+    .content__sidebar {
+        padding: 20px 15px;
+        flex: 0 1 15%;
+    }
+
+}
+
+@media (max-width: 900px) {
+
+    .content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content__sidebar {
+        padding: 0;
+        margin: 20px 0;
+    }
+
+    .sidebar__list {
+        flex-direction: row;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .sidebar__list li {
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar__list li:not(:last-child) {
+        margin-right: 40px;
+    }
+
+
+}
+
+@media (max-width: 500px) {
+
+    .feedback__content {
+        align-self: start;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .feedback__title {
+        font-size: 16px;
+    }
+
+    .feedback__text textarea {
+        height: 75px;
+    }
+
+    .content__body {
+        padding: 15px;
+    }
+
+}
+
+/*!*====== /CONTENT ===================================================================================*!*/

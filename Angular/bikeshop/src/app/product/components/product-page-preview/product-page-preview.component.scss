@@ -1,0 +1,80 @@
+.preview {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  &__main {
+    height: 400px;
+    position: relative;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+    span {
+      cursor: pointer;
+      opacity: 0;
+      display: block;
+      padding: 5px;
+      border-radius: 5px;
+      color: white;
+      position: absolute;
+      bottom: 0%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgb(155, 155, 155);
+      transition: all 0.3s ease-in;
+    }
+    &:hover span {
+      bottom: 5%;
+      opacity: 1;
+    }
+  }
+  &__extra {
+    &-colors {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      span {
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+        background-color: rgb(34, 33, 33);
+        border-radius: 50%;
+        &:not(:last-child) {
+          margin-right: 15px;
+        }
+        &:hover {
+          transform: scale(1.3);
+        }
+        &.active {
+          transform: scale(1.3);
+          border: 1px solid #000;
+        }
+      }
+    }
+    &-images {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      img {
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        border: 1px solid rgb(197, 197, 197);
+        object-fit: contain;
+        &:not(:last-child) {
+          margin-right: 10px;
+        }
+        &:hover {
+          border: 1px solid rgb(0, 0, 0);
+        }
+        &.active {
+          border: 1px solid rgb(0, 0, 0);
+        }
+      }
+    }
+  }
+}

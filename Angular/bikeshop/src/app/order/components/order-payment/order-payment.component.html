@@ -1,0 +1,242 @@
+<form [formGroup]="form" (change)="pushChange()">
+  <div class="form-control">
+    <div class="control-radio">
+      <div class="control-radio-item">
+        <input
+          type="radio"
+          value="card"
+          id="card"
+          formControlName="type"
+          (change)="payment.type = $event.target.value"
+        />
+        <label for="card">Card</label>
+      </div>
+      <div class="control-radio-item">
+        <input
+          type="radio"
+          value="cash"
+          id="cash"
+          formControlName="type"
+          (change)="payment.type = $event.target.value"
+        />
+        <label for="cash">Cash</label>
+      </div>
+      <div class="control-radio-item">
+        <input
+          type="radio"
+          value="paypal"
+          id="paypal"
+          formControlName="type"
+          (change)="payment.type = $event.target.value"
+        />
+        <label for="paypal">PayPal</label>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="form-control row"
+    *ngIf="payment.type === 'card'"
+    formGroupName="card"
+  >
+    <app-payment-card [card]="card"></app-payment-card>
+
+    <div class="form-container">
+      <div class="field-container control-input">
+        <input
+          onlyLetter
+          card="name"
+          id="name"
+          maxlength="20"
+          type="text"
+          placeholder=" "
+          formControlName="name"
+          [(ngModel)]="card.name"
+          [ngClass]="{
+            error:
+              form.get('card').get('name').invalid &&
+              form.get('card').get('name').touched,
+            success: form.get('card').get('name').valid
+          }"
+        />
+        <label for="name">Name</label>
+        <div
+          class="validation"
+          *ngIf="
+            form.get('card').get('name').invalid &&
+            form.get('card').get('name').touched
+          "
+        >
+          <small *ngIf="form.get('card').get('name').errors.required"
+            >Required field!</small
+          >
+        </div>
+      </div>
+
+      <div class="field-container control-input">
+        <input
+          card="card"
+          maxlength="19"
+          card="number"
+          onlyDigit
+          id="cardnumber"
+          type="text"
+          placeholder=" "
+          formControlName="number"
+          [(ngModel)]="card.number"
+          [ngClass]="{
+            error:
+              form.get('card').get('number').invalid &&
+              form.get('card').get('number').touched,
+            success: form.get('card').get('number').valid
+          }"
+        />
+        <label for="cardnumber">Card Number</label>
+        <div
+          class="validation"
+          *ngIf="
+            form.get('card').get('number').invalid &&
+            form.get('card').get('number').touched
+          "
+        >
+          <small *ngIf="form.get('card').get('number').errors.required"
+            >Required field!</small
+          >
+        </div>
+      </div>
+
+      <div class="field-container control-input">
+        <input
+          maxlength="5"
+          card="date"
+          onlyDigit
+          id="expirationdate"
+          type="text"
+          placeholder=" "
+          formControlName="date"
+          [(ngModel)]="card.date"
+          [ngClass]="{
+            error:
+              form.get('card').get('date').invalid &&
+              form.get('card').get('date').touched,
+            success: form.get('card').get('date').valid
+          }"
+        />
+        <label for="expirationdate">Expiration</label>
+        <div
+          class="validation"
+          *ngIf="
+            form.get('card').get('date').invalid &&
+            form.get('card').get('date').touched
+          "
+        >
+          <small *ngIf="form.get('card').get('date').errors.required"
+            >Required field!</small
+          >
+          <small *ngIf="form.get('card').get('date').errors.cardExpiration"
+            >Invalid date!</small
+          >
+        </div>
+      </div>
+
+      <div class="field-container control-input">
+        <input
+          maxlength="4"
+          onlyDigit
+          id="securitycode"
+          type="text"
+          placeholder=" "
+          formControlName="code"
+          [(ngModel)]="card.code"
+          (focus)="card.flip = true"
+          (blur)="card.flip = false"
+          [ngClass]="{
+            error:
+              form.get('card').get('code').invalid &&
+              form.get('card').get('code').touched,
+            success: form.get('card').get('code').valid
+          }"
+        />
+        <label for="securitycode">Security Code</label>
+        <div
+          class="validation"
+          *ngIf="
+            form.get('card').get('code').invalid &&
+            form.get('card').get('code').touched
+          "
+        >
+          <small *ngIf="form.get('card').get('code').errors.required"
+            >Required field!</small
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="form-control column"
+    *ngIf="payment.type === 'cash'"
+    formGroupName="cash"
+  >
+    <div class="control-radio">
+      <div class="control-radio-item">
+        <input
+          type="radio"
+          value="dollars"
+          id="dollars"
+          formControlName="currency"
+        />
+        <label for="dollars">Dollars</label>
+      </div>
+      <div class="control-radio-item">
+        <input type="radio" value="euro" id="euro" formControlName="currency" />
+        <label for="euro">Euro</label>
+      </div>
+    </div>
+    <div class="remains column">
+      <h3>How much should we use to prepare the change?</h3>
+      <div class="contol-radio-column">
+        <input
+          type="radio"
+          id="not"
+          [value]="false"
+          formControlName="remains"
+          (change)="checkRemains()"
+        />
+        <span></span>
+        <label for="not">No, I don't need change</label>
+      </div>
+      <div class="contol-radio-column">
+        <input
+          type="radio"
+          id="yes"
+          [value]="true"
+          formControlName="remains"
+          (change)="checkRemains()"
+        />
+        <span></span>
+        <label for="yes">I need change</label>
+      </div>
+      <div class="control-input">
+        <input
+          onlyDigit
+          type="text"
+          placeholder=" "
+          formControlName="remainsCount"
+        />
+        <label>Delivery from</label>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="form-control text-center column paypal"
+    *ngIf="payment.type === 'paypal'"
+  >
+    <p>
+      You have chosen the PayPal payment method, you can visit the site now or
+      do it later...
+    </p>
+    <a href="https://www.paypal.com/" target="_blank">Go to PayPal</a>
+  </div>
+</form>

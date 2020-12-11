@@ -1,0 +1,54 @@
+<div class="item" [discount]="card.discount">
+  <div class="preview">
+    <img [src]="card.images[0]" alt="bike" />
+    <label>{{ card.name }}</label>
+    <div class="discount" *ngIf="card.discount">
+      <div class="discount__wrapper">
+        <p>-{{ card.discount }}%</p>
+      </div>
+    </div>
+  </div>
+  <div class="description">
+    <div class="description__body">
+      <div class="description__body-text">
+        <h2>Model {{ card.name }}</h2>
+        <p>
+          {{
+            card.main
+              ? (card.description | limit: 100)
+              : (card.description | limit: 40)
+          }}
+        </p>
+      </div>
+      <div class="description__body-new" *ngIf="card.new">
+        <span>NEW</span>
+      </div>
+    </div>
+    <div class="description__info">
+      <div class="description__info-price" *ngIf="card.discount; else onePrice">
+        <div class="old">
+          {{ card.price | currency: "CAD":"symbol-narrow":".0" }}
+        </div>
+        <div class="new">
+          <p>
+            {{
+              card.price * (1 - card.discount / 100)
+                | currency: "CAD":"symbol-narrow":".0"
+            }}
+          </p>
+        </div>
+      </div>
+      <ng-template #onePrice>
+        <div class="description__info-price">
+          <div class="new">
+            {{ card.price | currency: "CAD":"symbol-narrow":".0" }}
+          </div>
+        </div>
+      </ng-template>
+      <div class="description__info-type">{{ card.shop | uppercase }}</div>
+    </div>
+    <div class="description__form">
+      <button [routerLink]="['/product', card.id]">Buy</button>
+    </div>
+  </div>
+</div>

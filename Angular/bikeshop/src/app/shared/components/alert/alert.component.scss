@@ -1,0 +1,75 @@
+.alert-wrap {
+  position: fixed;
+  bottom: 2%;
+  right: 1%;
+  min-width: 250px;
+  height: 75px;
+  z-index: 900;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.alert {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.message {
+  padding: 10px 40px 10px 10px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: right;
+}
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  top: 2%;
+  right: 3%;
+  font-size: 22px;
+}
+
+span {
+  display: block;
+  width: 35px;
+  height: 35px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin-right: 10px;
+  margin-top: -2.5px;
+}
+
+.success {
+  &.alert-wrap {
+    background-color: rgba(102, 192, 0, 0.7);
+    border: 2px solid rgb(0, 124, 10);
+    color: rgb(1, 99, 9);
+  }
+  span {
+    background-image: url("../../../../assets/image/icons/success.svg");
+  }
+}
+.warning {
+  &.alert-wrap {
+    background-color: rgba(255, 137, 41, 0.815);
+    border: 2px solid rgb(80, 39, 0);
+    color:  rgb(80, 39, 0);
+  }
+  span {
+    background-image: url("../../../../assets/image/icons/warning.svg");
+  }
+}
+.danger {
+  &.alert-wrap {
+    background-color: rgba(255, 45, 45, 0.7);
+    border: 2px solid rgb(92, 0, 0);
+    color:  rgb(83, 0, 0);
+  }
+  span {
+    background-image: url("../../../../assets/image/icons/danger.svg");
+  }
+}

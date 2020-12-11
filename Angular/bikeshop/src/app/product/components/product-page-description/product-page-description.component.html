@@ -1,0 +1,123 @@
+<div class="description">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <h1>{{ bike.name }}</h1>
+    <div class="text" *ngIf="bike.description.length < 100; else longPost">
+      <p>{{ bike.description }}</p>
+    </div>
+    <ng-template #longPost>
+      <div class="text" *ngIf="hide; else showPost">
+        <p>{{ bike.description | limit: 100 }}</p>
+        <a (click)="hide = !hide">(Read More)</a>
+      </div>
+      <ng-template #showPost>
+        <div class="text">
+          <p>{{ bike.description }}</p>
+          <a (click)="hide = !hide">(Hide)</a>
+        </div>
+      </ng-template>
+    </ng-template>
+    <div class="price" *ngIf="!bike.discount; else discountPrice">
+      <p>{{ bike.price | currency: "CAD":"symbol-narrow":".0" }}</p>
+    </div>
+    <ng-template #discountPrice>
+      <div class="price">
+        <p class="old">
+          {{ bike.price | currency: "CAD":"symbol-narrow":".0" }}
+        </p>
+        <p class="new">
+          {{
+            bike.price * (1 - bike.discount / 100)
+              | currency: "CAD":"symbol-narrow":".0"
+          }}
+        </p>
+        <p class="period">
+          (The discount is valid until:
+          {{ discountPeriod | date: "dd MMM yyyy" }})
+        </p>
+      </div>
+    </ng-template>
+    <div class="feedback">
+      <div class="stars">
+        <svg
+          viewBox="0 0 426.667 426.667"
+          *ngFor="let start of ratingStars; let idx = index"
+          [ngClass]="{ fill: idx < avgRating }"
+        >
+          <polygon
+            points="213.333,10.441 279.249,144.017 426.667,165.436 320,269.41 345.173,416.226 213.333,346.91 81.485,416.226 106.667,269.41 0,165.436 147.409,144.017 "
+          />
+        </svg>
+        <a>{{ bike.review.length }}</a>
+      </div>
+      <div class="reviews">
+        <a>Read {{ bike.review.length }} Reviews</a>
+        <a>Write a Review</a>
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="color">Color</label>
+      <select
+        id="color"
+        formControlName="color"
+        [ngClass]="{ error: form.get('color').invalid && submitted }"
+      >
+        <option value="preview" disabled selected>Select Color</option>
+        <option [value]="color" *ngFor="let color of bike.color">
+          {{ color }}
+        </option>
+      </select>
+      <div class="validation" *ngIf="form.get('color').invalid && submitted">
+        <small *ngIf="form.get('color').errors.restrictedSelect"
+          >Choose a color!</small
+        >
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="size">Size</label>
+      <select
+        id="size"
+        formControlName="size"
+        [ngClass]="{ error: form.get('size').invalid && submitted }"
+      >
+        <option value="preview" disabled selected>Select Size</option>
+        <option [value]="size" *ngFor="let size of bike.size">
+          {{ size }}
+        </option>
+      </select>
+      <div class="validation" *ngIf="form.get('size').invalid && submitted">
+        <small *ngIf="form.get('size').errors.restrictedSelect"
+          >Choose a size!</small
+        >
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="amount">Amount</label>
+      <input
+        type="text"
+        id="amount"
+        formControlName="amount"
+        maxlength="3"
+        [ngClass]="{ error: form.get('amount').invalid && submitted }"
+      />
+      <div
+        class="validation"
+        *ngIf="form.get('amount').invalid && form.get('amount').touched"
+      >
+        <small *ngIf="form.get('amount').errors.required"
+          >This field must not be empty!</small
+        >
+        <small *ngIf="form.get('amount').errors.onlyDigit"
+          >The value must be a number!</small
+        >
+      </div>
+    </div>
+    <button class="cart" type="submit">
+      <span class="material-icons"> shopping_cart </span>
+      <span>Add to cart</span>
+    </button>
+    <button class="wish">
+      <span class="material-icons"> create </span>
+      <span>Add to Wish List</span>
+    </button>
+  </form>
+</div>

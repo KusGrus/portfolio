@@ -1,0 +1,271 @@
+<div class="content">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <h1>Add new item to store</h1>
+
+    <div class="form-control">
+      <div class="control-input">
+        <input
+          type="text"
+          placeholder=" "
+          formControlName="model"
+          [ngClass]="{
+            error: form.get('model').invalid && form.get('model').touched,
+            success: form.get('model').valid
+          }"
+        />
+        <label>Model</label>
+        <div
+          class="validation"
+          *ngIf="form.get('model').invalid && form.get('model').touched"
+        >
+          <small>Required field!</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <div class="control-input">
+        <textarea
+          placeholder=" "
+          formControlName="description"
+          [ngClass]="{
+            error:
+              form.get('description').invalid &&
+              form.get('description').touched,
+            success: form.get('description').valid
+          }"
+        ></textarea>
+        <label>Description</label>
+        <div
+          class="validation"
+          *ngIf="
+            form.get('description').invalid && form.get('description').touched
+          "
+        >
+          <small>Required field!</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <p-fileUpload
+        name="myfile[]"
+        accept="image/*"
+        multiple="multiple"
+        (onSelect)="addImage($event)"
+      ></p-fileUpload>
+    </div>
+
+    <div class="form-control row">
+      <div class="form-control dashed-container" formArrayName="size">
+        <h3>Size*</h3>
+        <div class="column-grid">
+          <div class="control-checkbox" *ngFor="let size of sizes">
+            <input
+              type="checkbox"
+              [id]="size"
+              [value]="size"
+              (change)="onCheckboxChange($event, 'size')"
+            />
+            <span></span>
+            <label [for]="size">{{ size }}</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-control dashed-container" formArrayName="color">
+        <h3>Color*</h3>
+        <div class="column-grid">
+          <div class="control-checkbox" *ngFor="let color of colors">
+            <input
+              type="checkbox"
+              [id]="color"
+              [value]="color"
+              (change)="onCheckboxChange($event, 'color')"
+            />
+            <span></span>
+            <label [for]="color">{{ color | titlecase }}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <div class="control-input">
+        <input
+          onlyDigit
+          type="text"
+          placeholder=" "
+          formControlName="price"
+          [ngClass]="{
+            error: form.get('price').invalid && form.get('price').touched,
+            success: form.get('price').valid
+          }"
+        />
+        <label>Price</label>
+        <div
+          class="validation"
+          *ngIf="form.get('price').invalid && form.get('price').touched"
+        >
+          <small>Required field!</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-control dashed-container" formGroupName="discount">
+      <h3>Discount</h3>
+      <div class="contol-radio-column">
+        <input
+          type="radio"
+          id="without"
+          [value]="false"
+          formControlName="exist"
+        />
+        <span></span>
+        <label for="without">Without the discount</label>
+      </div>
+      <div class="contol-radio-column">
+        <input type="radio" id="with" [value]="true" formControlName="exist" />
+        <span></span>
+        <label for="with">Other</label>
+      </div>
+      <ng-container *ngIf="form.get('discount').get('exist').value">
+        <div class="form-control">
+          <div class="control-input">
+            <input
+              precent
+              onlyDigit
+              type="text"
+              placeholder=" "
+              formControlName="amount"
+            />
+            <label>Discount amount</label>
+            <div
+              class="validation"
+              *ngIf="
+                form.get('discount').get('amount').invalid &&
+                form.get('discount').get('amount').touched
+              "
+            >
+              <small>Required field!</small>
+            </div>
+          </div>
+        </div>
+        <div class="form-control datapicker-control">
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="date"
+            class="datapicker"
+            [ngClass]="{
+              error:
+                form.get('discount').get('date').invalid &&
+                form.get('discount').get('date').touched
+            }"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <div
+            class="validation"
+            *ngIf="
+              form.get('discount').get('date').invalid &&
+              form.get('discount').get('date').touched
+            "
+          >
+            <small>Invalid date!</small>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div
+      class="form-control"
+      [ngClass]="{
+        error: form.get('shop').invalid && form.get('shop').touched
+      }"
+    >
+      <h3>Shop:</h3>
+      <app-select [data]="shops" formControlName="shop"></app-select>
+      <div
+        class="validation-select"
+        *ngIf="form.get('shop').invalid && form.get('shop').touched"
+      >
+        <small>Required field!</small>
+      </div>
+    </div>
+
+    <div class="form-control dashed-container" formGroupName="shipping">
+      <h3>Cost of delivery</h3>
+      <div class="contol-radio-column">
+        <input type="radio" id="free" [value]="true" formControlName="free" />
+        <span></span>
+        <label for="free">Free shipping</label>
+      </div>
+      <div class="contol-radio-column">
+        <input type="radio" id="paid" [value]="false" formControlName="free" />
+        <span></span>
+        <label for="paid">Other</label>
+      </div>
+      <div class="form-control" *ngIf="!form.get('shipping').get('free').value">
+        <div class="control-input">
+          <input
+            onlyDigit
+            type="text"
+            placeholder=" "
+            formControlName="price"
+          />
+          <label>Price of shipping</label>
+          <div
+            class="validation"
+            *ngIf="
+              form.get('shipping').get('price').invalid &&
+              form.get('shipping').get('price').touched
+            "
+          >
+            <small>Required field!</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-control dashed-container">
+      <h3>Additional option</h3>
+      <div class="row-grid">
+        <div class="control-checkbox">
+          <input
+            type="checkbox"
+            id="main"
+            [value]="true"
+            formControlName="main"
+          />
+          <span></span>
+          <label for="main">Main card?</label>
+        </div>
+        <div class="control-checkbox">
+          <input
+            type="checkbox"
+            id="new"
+            [value]="true"
+            formControlName="new"
+          />
+          <span></span>
+          <label for="new">New product?</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <button
+        class="btn"
+        type="submit"
+        [disabled]="loading || form.invalid"
+        [ngClass]="{ 'btn-inActive': loading || form.invalid }"
+      >
+        Add
+      </button>
+    </div>
+  </form>
+</div>

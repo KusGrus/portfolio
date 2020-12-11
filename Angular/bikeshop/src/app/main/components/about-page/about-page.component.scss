@@ -1,0 +1,48 @@
+.content {
+  display: flex;
+  padding: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.location {
+  padding: 40px;
+  display: flex;
+  background-color: #4d4959;
+  border-radius: 10px;
+  align-self: start;
+  &__map {
+    iframe {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    padding: 40px;
+    border: 2px solid white;
+    border-radius: 10px;
+    address,
+    a {
+      position: relative;
+      padding: 10px 10px 10px 50px;
+      font-size: 20px;
+      font-weight: 700;
+      color: white;
+      display: flex;
+      margin: 25px 0;
+    }
+    address svg,
+    a svg {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      height: 30px;
+      width: 30px;
+      fill: white;
+    }
+  }
+}

@@ -1,0 +1,137 @@
+.wrapper {
+  padding: 40px;
+}
+
+form {
+  font-family: sans-serif;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  h1 {
+    font-size: 25px;
+    margin-bottom: 30px;
+  }
+  .trash {
+    cursor: pointer;
+    background-image: url("../../../../assets/image/icons/trash.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 40px;
+    height: 40px;
+    border: 1px dashed #000;
+    border-radius: 50%;
+    transition: all 1s ease;
+    &:hover {
+      transform: scale(1.1);
+      border: 1px solid #000;
+    }
+  }
+}
+
+.form-control {
+  &:not(:first-child) {
+    margin-top: 60px;
+  }
+  &:first-child {
+    margin-top: 40px;
+  }
+  p {
+    color: rgb(146, 146, 146);
+    font-size: 16px;
+    text-align: right;
+    margin-bottom: 30px;
+  }
+}
+
+.page-buttons {
+  display: flex;
+  margin-top: 60px;
+}
+
+.remains {
+  padding: 20px;
+  color: #707070;
+  h3 {
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .contol-radio-column {
+    margin-top: 30px;
+  }
+  .control-input {
+    margin-top: 50px;
+    max-width: 300px;
+  }
+}
+
+.form-container .field-container:first-of-type {
+  grid-area: name;
+}
+
+.form-container .field-container:nth-of-type(2) {
+  grid-area: number;
+}
+
+.form-container .field-container:nth-of-type(3) {
+  grid-area: expiration;
+}
+
+.form-container .field-container:nth-of-type(4) {
+  grid-area: security;
+}
+
+.field-container {
+  position: relative;
+}
+
+.form-container {
+  display: grid;
+  grid-column-gap: 10px;
+  grid-template-columns: auto auto;
+  grid-template-rows: 90px 90px 90px;
+  grid-template-areas: "name name" "number number" "expiration security";
+  max-width: 400px;
+  padding: 20px;
+  color: #707070;
+}
+
+.block-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  a {
+    text-decoration: none;
+    padding: 5px;
+    color: black;
+    cursor: pointer;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 700;
+    font-size: 25px;
+    &:hover {
+      border-bottom: 1px dashed black;
+    }
+  }
+}
+
+.total {
+  justify-content: center;
+  font-size: 25px;
+  padding: 30px 20px 0;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid black;
+  div {
+    font-weight: 700;
+    margin-right: 20px;
+    font-size: 25px;
+  }
+}

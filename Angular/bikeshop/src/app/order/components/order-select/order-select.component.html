@@ -1,0 +1,31 @@
+<div class="select">
+  <div class="select__header" (click)="visible = !visible">
+    <span class="select__current">{{ current }}</span>
+    <div class="select__icon"></div>
+  </div>
+  <div class="select__body" *ngIf="visible" [@box]>
+    <div
+      class="select__item"
+      *ngFor="let product of storeItems$ | async"
+      (click)="visible = !visible"
+    >
+      <div class="image">
+        <img [src]="product.images[0]" alt="bike" />
+      </div>
+      <div class="infromation">
+        <div class="title">{{ product.name }}</div>
+        <div class="description">{{ product.description | limit: 25 }}</div>
+      </div>
+      <div class="price" *ngIf="product.discount; else withoutDiscount">
+        {{ product.price * (1 - product.discount / 100) | currency: "CAD":"symbol-narrow":".0" }}
+      </div>
+      <ng-template #withoutDiscount>
+        <div class="price">
+          {{ product.price | currency: "CAD":"symbol-narrow":".0" }}
+        </div>
+      </ng-template>
+      <div class="link use" [routerLink]="['/product', product.id]"></div>
+      <div class="add use" (click)="addCurrent(product.id)"></div>
+    </div>
+  </div>
+</div>

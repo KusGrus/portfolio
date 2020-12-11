@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+        <title>Task_3_7</title>
+    </head>
+    <body>
+        <div class="wrapper container">
+            <div class="order">
+                <div class="order__title">Sign <span>Up</span></div>
+                <div class="order__step">
+                    <div class="step">Your Info</div>
+                    <div class="step active">Your preferences</div>
+                </div>
+                <form class="order__body">
+                    <div class="content">
+                        <div class="area">
+                            <label for="desription">Food alergies</label>
+                            <textarea id="desription"></textarea>
+                        </div>
+                        <div class="area">
+                            <label id="frequency">Frequency</label>
+                            <div class="area__list">
+                                <div class="item">
+                                    <div>
+                                        <input type="checkbox" id="f1" />
+                                        <span></span>
+                                    </div>
+                                    <label for="f1">Weekly</label>
+                                </div>
+                                <div class="item">
+                                    <div>
+                                        <input type="checkbox" id="f2" />
+                                        <span></span>
+                                    </div>
+                                    <label for="f2">Biweekly</label>
+                                </div>
+                                <div class="item">
+                                    <div>
+                                        <input type="checkbox" id="f3" />
+                                        <span></span>
+                                    </div>
+                                    <label for="f3">Monthly</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="area">
+                            <label id="package">Package size</label>
+                            <div class="area__list">
+                                <div class="item">
+                                    <div>
+                                        <input type="checkbox" id="p1" />
+                                        <span></span>
+                                    </div>
+                                    <label for="p1">Taste test</label>
+                                </div>
+                                <div class="item">
+                                    <div>
+                                        <input type="checkbox" id="p2" />
+                                        <span></span>
+                                    </div>
+                                    <label for="p2">Healthy Highlight</label>
+                                </div>
+                                <div class="item">
+                                    <div>
+                                        <input type="checkbox" id="p3" />
+                                        <span></span>
+                                    </div>
+                                    <label for="p3">Full plate</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <button class="back">Back</button>
+                            <button class="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="js/script.js"></script>
+    </body>
+</html>

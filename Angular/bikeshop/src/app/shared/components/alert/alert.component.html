@@ -1,0 +1,18 @@
+<div
+  [@bounce]
+  class="alert-wrap"
+  *ngIf="message"
+  [ngClass]="{
+    success: type === 'success',
+    warning: type === 'warning',
+    danger: type === 'danger'
+  }"
+>
+  <div class="alert">
+    <div class="close" (click)="closeAlert()">&times;</div>
+    <div class="message">
+      <span></span>
+      <p>{{ message }}</p>
+    </div>
+  </div>
+</div>

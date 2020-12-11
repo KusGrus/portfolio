@@ -1,0 +1,240 @@
+.bgi {
+  background: #000000 url("../../../../assets/image/header/bgi.jpg") 0 0 / cover
+    no-repeat;
+  color: white;
+  position: relative;
+  z-index: 4;
+  &:after {
+    content: "";
+    position: absolute;
+    background-color: #000000;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  box-sizing: border-box;
+  max-width: 1200px;
+  padding: 0 15px;
+}
+
+.header {
+  padding: 0px 0 20px;
+  position: relative;
+  z-index: 1;
+  h1 {
+    margin-top: 40px;
+    text-align: center;
+    font-size: calc(28px + (15 + 15 * 0.7) * ((100vw - 320px) / 1200));
+    font-weight: 900;
+    letter-spacing: 2.5px;
+  }
+  &__body {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-logo {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -30%);
+      display: flex;
+      max-height: 100px;
+      max-width: 100px;
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    &-burger {
+      display: none;
+    }
+    ul {
+      width: 100%;
+      padding: 30px 0 0 0;
+      display: flex;
+      margin-top: 20px;
+      justify-content: space-around;
+      li {
+        position: relative;
+        a {
+          cursor: pointer;
+          text-transform: uppercase;
+          font-weight: 700;
+          color: white;
+          font-size: 25px;
+        }
+        span {
+          z-index: 99999;
+          position: absolute;
+          text-align: center;
+          font-size: 15px;
+          top: -52%;
+          right: -42%;
+          font-weight: 700;
+          display: block;
+          line-height: 22px;
+          width: 22px;
+          height: 22px;
+          border-radius: 50%;
+          background-color: rgb(255, 255, 255);
+          color: black;
+        }
+        &:hover a {
+          display: block;
+          transform: scale(1.1);
+          color: burlywood;
+        }
+      }
+      li:nth-child(2) {
+        margin: 0 50px 0 0;
+      }
+
+      li:nth-child(3) {
+        margin: 0 0 0 50px;
+      }
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+@media (max-width: 1000px) {
+  .header {
+    h1 {
+      margin: 0;
+      position: relative;
+      top: -12px;
+    }
+    &__body {
+      &-burger {
+        display: block;
+        position: relative;
+        height: 40px;
+        width: 50px;
+        left: 40%;
+        top: 30px;
+        overflow: hidden;
+      }
+      &-logo {
+        left: 15%;
+        top: 85%;
+        img {
+          height: 75%;
+          width: 75%;
+        }
+      }
+      &-burger:after,
+      &-burger:before,
+      &-burger span {
+        position: absolute;
+        content: "";
+        bottom: 0;
+        left: 0;
+        height: 4px;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        transition: all 0.3s ease 0s;
+      }
+      &-burger:after {
+        top: 0;
+      }
+
+      &-burger span {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &-burger.close {
+        z-index: 5;
+      }
+      &-burger.close:after,
+      &-burger.close:before,
+      &-burger.close span {
+        transition: all 0.3s ease 0s;
+        background-color: rgb(0, 0, 0);
+      }
+
+      &-burger.close:after {
+        top: 46%;
+        transform: rotate(45deg);
+      }
+      &-burger.close span {
+        opacity: 0;
+      }
+      &-burger.close:before {
+        bottom: 46%;
+        transform: rotate(-45deg);
+      }
+      ul {
+        flex-direction: column;
+        position: fixed;
+        z-index: 4;
+        align-items: center;
+        overflow: auto;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100%;
+        background-image: url("../../../../assets/image/header/card-bgi.png");
+        padding: 50px 10px;
+        transition: all 0.3s ease 0s;
+        &.active {
+          right: 0;
+        }
+        li {
+          margin: 0;
+          position: relative;
+          a {
+            color: black;
+          }
+          &:after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 150%;
+            transform: translateX(-50%);
+            height: 10px;
+            width: 10px;
+            border: 3px solid #000;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 627px) {
+  .header {
+    h1 {
+      margin: 0;
+      top: -12px;
+      left: -12.5%;
+    }
+    &__body {
+      &-logo {
+        display: none;
+      }
+      &-burger {
+        top: 20px;
+        height: 30px;
+        width: 40px;
+      }
+      ul {
+        width: 100%;
+        li {
+          padding: 0;
+          &:after {
+            top: 300%;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+<ng-container *ngIf="visible">
+  <div class="backdrop" (click)="closeModal()"></div>
+  <div class="modal">
+    <div class="modal__title">
+      Are you sure you want to delete the product ({{ bike }})?
+    </div>
+    <div class="modal__warning">
+      The product will be permanently deleted!
+    </div>
+    <div class="modal__action">
+      <button class="control btn" (click)="confirmation()">Confirm</button>
+      <button class="control btn-danger" (click)="closeModal()">Cancel</button>
+    </div>
+  </div>
+</ng-container>
