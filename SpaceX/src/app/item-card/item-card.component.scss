@@ -1,0 +1,49 @@
+.card {
+  padding-bottom: 30px;
+  margin-top: 40px;
+  border-bottom: 1px solid #a5a5a5;
+  &__title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    p {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 23px;
+      color: rgba(0, 0, 0, 0.87);
+    }
+    span {
+      display: block;
+      width: 16px;
+      cursor: pointer;
+      height: 16px;
+      background-image: url("../../assets/images/icons//arrow.png");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      margin: -2px 0 0 23px;
+      transition: transform 0.1s ease-in;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+  &__information {
+    display: grid;
+    grid-template: 1fr/ 425px 425px 425px;
+    .control {
+      display: flex;
+      align-items: center;
+      &__key {
+        font-size: 16px;
+        line-height: 24px;
+        color: rgba(0, 0, 0, 0.87);
+      }
+      &__value {
+        margin-left: 105px;
+        font-size: 16px;
+        line-height: 24px;
+        color: #2962ff;
+      }
+    }
+  }
+}

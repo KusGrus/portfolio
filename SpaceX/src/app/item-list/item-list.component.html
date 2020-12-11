@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <main>
+    <h1>SpaceX Ships</h1>
+    <ng-container *ngIf="stream$ | async as items; else loading">
+      <app-item-card
+        [object]="item"
+        *ngFor="
+          let item of items
+            | filter: filter.name:filter.port:filter.type
+            | pagination: page:itemPerPage
+        "
+      ></app-item-card>
+      <app-pagination
+        [itemPerPage]="itemPerPage"
+        [maximum]="(items | filter: filter.name:filter.port:filter.type).length"
+      ></app-pagination>
+    </ng-container>
+    <ng-template #loading>
+      <p>Загрузка...</p>
+    </ng-template>
+  </main>
+  <aside>
+    <app-filter *ngIf="options" [options]="options"></app-filter>
+  </aside>
+</div>

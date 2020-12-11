@@ -1,0 +1,34 @@
+<div class="wrapper">
+  <div class="info" *ngIf="stream$ | async as object; else loading">
+    <div class="back" [routerLink]="['']">
+      <span></span>
+      <p>Вернуться</p>
+    </div>
+    <div class="info__title">{{ object.name }}</div>
+    <div class="info__description">
+      <div class="control">
+        <div class="control__key">Тип</div>
+        <div class="control__value">{{ object.type | unknown }}</div>
+      </div>
+      <div class="control">
+        <div class="control__key">Порт</div>
+        <div class="control__value">{{ object.home_port | unknown }}</div>
+      </div>
+      <div class="control">
+        <div class="control__key">Вес</div>
+        <div class="control__value">{{ object.weight_kg | unknown: "кг" }}</div>
+      </div>
+      <div class="control">
+        <div class="control__key">Год</div>
+        <div class="control__value">{{ object.year_built | unknown }}</div>
+      </div>
+    </div>
+    <div class="info__missions">
+      <h3>Миссии</h3>
+      <p>{{ arrayToString(object.missions) | unknown }}</p>
+    </div>
+  </div>
+  <ng-template #loading>
+    <p>Загрузка...</p>
+  </ng-template>
+</div>

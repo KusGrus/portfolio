@@ -1,0 +1,37 @@
+.wrapper {
+  margin-top: 50px;
+  max-width: 100px;
+}
+.pagination {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.value {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 32px;
+}
+
+.arrow {
+  svg {
+    cursor: pointer;
+    width: 12px;
+    height: 12px;
+    fill: #347cff;
+    &:hover {
+      fill: black;
+    }
+  }
+  &.disabled {
+    svg {
+      fill: #3c474c;
+    }
+  }
+  &:first-child {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+}

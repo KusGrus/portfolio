@@ -1,0 +1,68 @@
+<div class="wrapper">
+  <form>
+    <h2>Фильтры</h2>
+    <div class="form-control">
+      <div class="control-input">
+        <input
+          type="text"
+          [(ngModel)]="config.name"
+          (ngModelChange)="handle()"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        <label [ngClass]="{ active: config.name }">Название</label>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <div class="control-input" (click)="visible = !visible">
+        <input class="check-input" multi-check type="text" [value]="splitString(config.port).length | checkInput" />
+        <label [ngClass]="{ active: splitString(config.port).length }">Порт</label>
+      </div>
+      <div class="control-checkbox" *ngIf="visible">
+        <div class="checkbox-item" *ngFor="let port of options.port">
+          <input
+            multi-multi-check
+            type="checkbox"
+            [id]="port"
+            [value]="port"
+            (change)="onCheckboxChange($event)"
+            [checked]="config.port.includes(port)"
+          />
+          <span></span>
+          <label [for]="port">{{ port }}</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <h3>Тип</h3>
+      <div class="control-radio">
+        <div class="radio-item" *ngFor="let type of options.type">
+          <input
+            type="radio"
+            name="type"
+            [id]="type"
+            [value]="type"
+            [(ngModel)]="config.type"
+            (ngModelChange)="onRadioChange($event)"
+          />
+          <span></span>
+          <label [for]="type">{{ type }}</label>
+        </div>
+        <div class="radio-item">
+          <input
+            [checked]="config.type === ''"
+            type="radio"
+            name="type"
+            id="empty"
+            [value]=""
+            [(ngModel)]="config.type"
+            (ngModelChange)="onRadioChange($event)"
+          />
+          <span></span>
+          <label for="empty">Убрать фильтрацию по типу</label>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

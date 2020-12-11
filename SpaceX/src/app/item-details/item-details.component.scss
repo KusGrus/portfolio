@@ -1,0 +1,71 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 48px 64px;
+}
+
+.info {
+  display: inline-block;
+  max-width: 700px;
+  .back {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-bottom: 22px;
+    span {
+      display: block;
+      width: 10px;
+      height: 10px;
+      background-image: url("../../assets/images/icons//arrow.png");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      transform: rotate(180deg);
+      margin: -2px 7px 0 0;
+    }
+    p {
+      font-size: 14px;
+      line-height: 16px;
+      color: #2962ff;
+    }
+  }
+  &__title {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 33px;
+    color: rgba(0, 0, 0, 0.87);
+    margin-bottom: 50px;
+  }
+  &__description {
+    display: grid;
+    grid-template: 1fr/ 425px 425px;
+    gap: 40px 0;
+    margin-bottom: 40px;
+    .control {
+      display: grid;
+      grid-template: 1fr/ 115px 1fr;
+      &__key {
+        font-size: 16px;
+        line-height: 24px;
+        color: rgba(0, 0, 0, 0.87);
+      }
+      &__value {
+        font-size: 16px;
+        line-height: 24px;
+        color: #2962ff;
+      }
+    }
+  }
+  &__missions {
+    h3 {
+      font-size: 16px;
+      line-height: 24px;
+      color: rgba(0, 0, 0, 0.87);
+      margin-bottom: 22px;
+    }
+    p {
+      font-size: 16px;
+      line-height: 32px;
+      color: #2962ff;
+    }
+  }
+}

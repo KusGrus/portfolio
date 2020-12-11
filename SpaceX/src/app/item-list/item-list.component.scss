@@ -1,0 +1,25 @@
+.wrapper {
+  margin: 0 auto;
+  max-width: 1920px;
+  display: flex;
+}
+main {
+  padding: 52px 64px 162px;
+  flex: 1 0 80%;
+  h1 {
+    margin-bottom: 64px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 32px;
+  }
+}
+
+aside {
+  flex: 1 0 20%;
+}
+
+.card {
+  margin-bottom: 50px;
+}
