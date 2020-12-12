@@ -9,5 +9,4 @@ import { ShipList } from '../interfaces';
 export class ItemCardComponent {
   @Input() object: ShipList = null;
   @Output() onClick: EventEmitter<void> = new EventEmitter<void>();
-  constructor() {}
 }

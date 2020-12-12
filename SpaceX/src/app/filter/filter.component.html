@@ -1,6 +1,7 @@
 <div class="wrapper">
   <form>
     <h2>Фильтры</h2>
+
     <div class="form-control">
       <div class="control-input">
         <input
@@ -15,8 +16,8 @@
 
     <div class="form-control">
       <div class="control-input" (click)="visible = !visible">
-        <input class="check-input" multi-check type="text" [value]="splitString(config.port).length | checkInput" />
-        <label [ngClass]="{ active: splitString(config.port).length }">Порт</label>
+        <input class="check-input" multi-check type="text" [value]="config.port.length | checkInput" />
+        <label [ngClass]="{ active: config.port.length }">Порт</label>
       </div>
       <div class="control-checkbox" *ngIf="visible">
         <div class="checkbox-item" *ngFor="let port of options.port">

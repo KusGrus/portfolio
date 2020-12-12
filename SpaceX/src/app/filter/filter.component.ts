@@ -18,7 +18,6 @@ export class FilterComponent implements OnInit {
   @Input() options: FilterOptions;
   public visible: boolean = false;
   public config: Filter;
-  public ports: Array<string> = [];
 
   constructor(
     private eRef: ElementRef,
@@ -45,17 +44,12 @@ export class FilterComponent implements OnInit {
 
   onCheckboxChange(event): void {
     let name = event.target.value;
-    if (this.ports.includes(name)) {
-      this.ports = this.ports.filter((item) => item !== name);
+    if (this.config.port.includes(name)) {
+      this.config.port = this.config.port.filter((item) => item !== name);
     } else {
-      this.ports.push(name);
+      this.config.port.push(name);
     }
-    this.config.port = this.ports.join('!~!');
     this.handle();
-  }
-
-  splitString(str: string): Array<string> {
-    return str.split('!~!').filter((item) => item !== '');
   }
 
   onRadioChange(event): void {

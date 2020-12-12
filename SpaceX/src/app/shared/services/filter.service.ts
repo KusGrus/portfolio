@@ -6,7 +6,7 @@ import { Filter } from 'src/app/interfaces';
 export class FilterService {
   public filter$ = new BehaviorSubject<Filter>({
     name: '',
-    port: '',
+    port: [],
     type: '',
   });
 

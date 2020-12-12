@@ -26,7 +26,7 @@ export interface ShipDetails {
 
 export interface Filter {
   name: string;
-  port: string;
+  port: Array<string>;
   type: string;
 }
 

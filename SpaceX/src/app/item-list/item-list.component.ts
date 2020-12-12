@@ -37,7 +37,10 @@ export class ItemListComponent implements OnInit, OnDestroy {
       })
     );
     this.spacex.page$.subscribe((value) => (this.page = value));
-    this.filterService.filter$.subscribe((value) => (this.filter = value));
+    this.filterService.filter$.subscribe((value) => {
+      this.filter = value;
+      this.filter.port = [...value.port];
+    });
   }
 
   ngOnDestroy(): void {
