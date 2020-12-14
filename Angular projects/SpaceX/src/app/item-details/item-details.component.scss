@@ -4,9 +4,12 @@
   padding: 48px 64px;
 }
 
+.container {
+  max-width: 700px;
+}
+
 .info {
   display: inline-block;
-  max-width: 700px;
   .back {
     cursor: pointer;
     display: flex;
@@ -66,6 +69,31 @@
       font-size: 16px;
       line-height: 32px;
       color: #2962ff;
+    }
+  }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .info {
+    width: 850px;
+    &__description {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+      .control {
+        flex: 0 0 50%;
+        display: flex;
+        &:nth-child(n + 3) {
+          margin-top: 40px;
+        }
+        &__key {
+          flex: 0 0 115px;
+        }
+        &value {
+          flex: 0 0 310px;
+        }
+      }
     }
   }
 }

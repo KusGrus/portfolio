@@ -5,7 +5,7 @@
 }
 main {
   padding: 52px 64px 162px;
-  flex: 1 0 80%;
+  flex: 0 1 80%;
   h1 {
     margin-bottom: 64px;
     font-family: Roboto;
@@ -17,7 +17,7 @@ main {
 }
 
 aside {
-  flex: 1 0 20%;
+  flex: 1 0  20%;
 }
 
 .card {

@@ -22,6 +22,7 @@ export interface ShipDetails {
   year_built: number;
   type: string;
   active: boolean;
+  __typename?: string;
 }
 
 export interface Filter {

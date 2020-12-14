@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <div class="info" *ngIf="stream$ | async as object; else loading">
+  <div class="info" *ngIf="object; else loading">
     <div class="back" [routerLink]="['']">
       <span></span>
       <p>Вернуться</p>
@@ -23,7 +23,7 @@
         <div class="control__value">{{ object.year_built | unknown }}</div>
       </div>
     </div>
-    <div class="info__missions">
+    <div class="info__missions container">
       <h3>Миссии</h3>
       <p>{{ arrayToString(object.missions) | unknown }}</p>
     </div>
