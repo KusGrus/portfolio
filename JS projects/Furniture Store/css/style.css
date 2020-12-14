@@ -1,0 +1,338 @@
+/* Common Styles */
+.btn {
+    background-color: rgb(235, 235, 235);
+    padding: 10px 40px;
+    font-size: 16px;
+    color: rgb(117, 116, 116);
+}
+
+.btn:hover,
+.btn:active {
+    background-color: rgb(224, 224, 224);
+}
+
+.btn-order, .btn-send {
+    color: white;
+    background-color: rgb(202, 60, 83);
+}
+
+.btn-order:hover,
+.btn-order:active,
+.btn-send:hover,
+.btn-send:active {
+    background-color: rgb(204, 39, 66);
+}
+
+.hide {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+/* EOF Common Styles */
+
+/* Product List */
+
+.product-listing-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.product-listing {
+    padding: 40px 20px;
+}
+
+.product {
+    display: grid;
+    height: 250px;
+    grid-template: 1fr /30% 50% 20%;
+}
+
+.product:not(:first-child) {
+    margin-top: 35px;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.description {
+    padding: 20px 30px;
+    color: rgb(90, 90, 90);
+    font-weight: 500;
+}
+
+.title {
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    margin-bottom: 25px;
+}
+
+.price {
+    font-size: 22px;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.actions .btn:not(:first-child) {
+    margin-top: 30px;
+}
+
+/* EOF Product List */
+
+/* Cart Icon */
+
+.cart-icon {
+    position: relative;
+    position: fixed;
+    top: 50px;
+    right: 50px;
+}
+
+.cart-icon.zero:after {
+    opacity: 0;
+}
+
+.cart-icon:after {
+    content: attr(data-count);
+    position: absolute;
+    text-align: center;
+    top: -5px;
+    right: -15px;
+    font-size: 15px;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    color: white;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.cart-icon img {
+    width: 50px;
+}
+
+/* EOF Cart Icon */
+
+/* Cart Popup */
+
+.cart-popup {
+    position: fixed;
+    top: 55px;
+    right: 120px;
+    width: 300px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.23), 0px 3px 6px rgba(0, 0, 0, 0.16);
+    transition: opacity 0.5s ease-in-out;
+}
+
+.cart-popup .information {
+    position: relative;
+    padding: 15px;
+    background-color: rgb(153, 153, 153);
+    text-align: left;
+    color: white;
+    font-size: 18px;
+}
+
+.cart-popup .information::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -17px;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border: 10px solid transparent;
+    border-left: 10px solid rgb(153, 153, 153);
+}
+
+.cart-popup .popup-body {
+    display: flex;
+}
+.popup-body {
+    position: relative;
+    padding: 10px;
+}
+
+.popup-body span {
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 15px;
+    height: 15px;
+    background-image: url("../assets/images/icons/close.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.popup-body span:hover {
+    transform: scale(1.1);
+}
+
+.popup-body .image {
+    flex: 1 0 40%;
+    overflow: hidden;
+}
+
+.popup-body .image ing {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.popup-body .description {
+    flex: 1 0 60%;
+    padding: 10px;
+}
+
+.popup-body .description .title {
+    color: black;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.popup-body .description .price {
+    font-size: 16px;
+}
+
+.cart-popup .action {
+    padding: 10px;
+}
+
+.cart-popup .action .btn {
+    padding: 10px 20px;
+}
+
+/* EOF Cart Popup */
+
+/* Order Popup */
+
+.backdrop {
+    z-index: 2;
+    position: fixed;
+    overflow: hidden;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.order-popup .popup-body {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    min-width: 800px;
+    min-height: 400px;
+    background-color: #fff;
+    border: 4px solid rgb(192, 192, 192);
+    padding: 15px 20px 40px;
+}
+
+.order-popup span {
+    background-image: url(../assets/images/icons/close-black.png);
+}
+
+.order-popup .title {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.order-popup .description {
+    display: flex;
+    color: black;
+}
+
+.order-popup .description .information {
+    flex: 1 0 30%;
+}
+
+.order-popup .description .comments {
+    flex: 1 0 70%;
+}
+
+.order-popup .popup-body .image img {
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: contain;
+}
+
+.order-popup .popup-body .price {
+    color: rgb(202, 0, 94);
+    font-size: 24px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.order-popup .comments {
+    min-height: 100%;
+    display: flex;
+    margin-left: 10px;
+    padding: 0 40px 0 10px;
+    border-left: 4px solid rgb(202, 0, 94);
+}
+
+.order-popup .comments label {
+    flex: 1 0 15%;
+    text-align: right;
+}
+
+.order-popup .comments textarea {
+    flex: 1 1 85%;
+    background-color: rgb(238, 238, 238);
+    margin-left: 30px;
+    resize: none;
+    max-height: 125px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.order-popup .contacts {
+    display: flex;
+    margin-top: 10px;
+    font-weight: 500;
+    padding: 0 10px;
+    align-items: center;
+}
+
+.order-popup .contacts label {
+    flex: 0 0 27%;
+    text-align: right;
+}
+
+.order-popup .contacts input {
+    flex: 1 0 73%;
+    background-color: rgb(238, 238, 238);
+    padding: 5px 8px;
+    margin-left: 4%;
+    max-width: 200px;
+    font-size: 16px;
+}
+
+.order-popup .actions {
+    margin-top: 25px;
+}
+
+.order-popup .btn-send {
+    padding: 10px 20px;
+    max-width: 150px;
+    margin-left: 31.5%;
+}
+
+/* EOF Order Popup */
