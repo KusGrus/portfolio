@@ -12,22 +12,25 @@ import { Subscription } from 'rxjs';
 })
 export class ItemDetailsComponent implements OnInit, OnDestroy {
   public object: ShipDetails;
-  private subscribe: Subscription;
+  private subscriptions: Array<Subscription> = [];
   constructor(private spacex: BackendService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.subscribe = this.route.paramMap
-      .pipe(
-        map((params) => params.get('id') as string),
-        switchMap((id) => this.spacex.getById(id))
-      )
-      .subscribe((value: ShipDetails) => {
-        this.object = value;
-      });
+    this.subscriptions.push(
+      this.route.paramMap
+        .pipe(
+          map((params) => params.get('id') as string),
+          switchMap((id) => this.spacex.getById(id))
+        )
+        .subscribe((value: ShipDetails) => {
+          this.object = value;
+        })
+    );
   }
 
   ngOnDestroy(): void {
-    if (this.subscribe) this.subscribe.unsubscribe();
+    if (this.subscriptions.length)
+      this.subscriptions.forEach((item: Subscription) => item.unsubscribe());
   }
 
   arrayToString(array: Array<Mission>): string {

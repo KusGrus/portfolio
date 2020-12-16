@@ -15,7 +15,7 @@ export class ItemListComponent implements OnInit, OnDestroy {
   public options: FilterOptions;
   public itemPerPage: number = 5;
   public filter: Filter;
-  private subscribe: Subscription;
+  private subscriptions: Array<Subscription> = [];
   public stream$: Observable<Array<ShipList>>;
 
   constructor(
@@ -36,14 +36,21 @@ export class ItemListComponent implements OnInit, OnDestroy {
         };
       })
     );
-    this.spacex.page$.subscribe((value) => (this.page = value));
-    this.filterService.filter$.subscribe((value) => {
-      this.filter = value;
-      this.filter.port = [...value.port];
-    });
+
+    this.subscriptions.push(
+      this.spacex.page$.subscribe((value) => (this.page = value))
+    );
+    
+    this.subscriptions.push(
+      this.filterService.filter$.subscribe((value) => {
+        this.filter = value;
+        this.filter.port = [...value.port];
+      })
+    );
   }
 
   ngOnDestroy(): void {
-    if (this.subscribe) this.subscribe.unsubscribe();
+    if (this.subscriptions.length)
+      this.subscriptions.forEach((item: Subscription) => item.unsubscribe());
   }
 }

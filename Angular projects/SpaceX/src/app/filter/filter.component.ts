@@ -3,8 +3,10 @@ import {
   ElementRef,
   HostListener,
   Input,
+  OnDestroy,
   OnInit,
 } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Filter, FilterOptions } from '../interfaces';
 import { BackendService } from '../shared/services/backend.service';
 import { FilterService } from '../shared/services/filter.service';
@@ -14,10 +16,11 @@ import { FilterService } from '../shared/services/filter.service';
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss'],
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent implements OnInit, OnDestroy {
   @Input() options: FilterOptions;
   public visible: boolean = false;
   public config: Filter;
+  private subscriptions: Array<Subscription> = [];
 
   constructor(
     private eRef: ElementRef,
@@ -26,9 +29,16 @@ export class FilterComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.filterService.filter$.subscribe((value) => {
-      this.config = value;
-    });
+    this.subscriptions.push(
+      this.filterService.filter$.subscribe((value) => {
+        this.config = value;
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscriptions.length)
+      this.subscriptions.forEach((item: Subscription) => item.unsubscribe());
   }
 
   @HostListener('document:click', ['$event']) clickout(event) {
